@@ -8,20 +8,14 @@ struct HomeView: View {
             // The ZStack allows us to place the background color behind other content
             ZStack {
                 // Background color occupying the entire screen area
-                Color.purple.opacity(0.1) // Using a light purple, you can choose any color
-                    .edgesIgnoringSafeArea(.all) // Makes the background extend into safe areas
-
+                Color.yellow.opacity(0.3)                  .edgesIgnoringSafeArea(.all)
+                
                 VStack(spacing: 0) {
                     // Top Spacer to push ListView down
                     Spacer()
 
                     // ListView component, centered vertically by the Spacers
                     ListView()
-                        .frame(height: geometry.size.height * 0.9) // Maintain 78% height
-                        .background(Color.yellow.opacity(0.2)) // Existing background for ListView area
-//                        .overlay(Text("歌单内容 (ListView)").foregroundColor(.primary).font(.headline))
-
-                    // Bottom Spacer to push ListView up
                     Spacer()
                 }
             }
