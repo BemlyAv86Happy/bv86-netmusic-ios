@@ -305,7 +305,7 @@
 				};
 			};
 			buildConfigurationList = B58FBDFF2DFF388900A622E4 /* Build configuration list for PBXProject "netmusic" */;
-			compatibilityVersion = "Xcode 14.0";
+			compatibilityVersion = "Xcode 12.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
