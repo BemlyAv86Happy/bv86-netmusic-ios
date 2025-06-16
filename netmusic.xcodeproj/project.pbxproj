@@ -144,6 +144,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5948F63423D271333B9DD854 /* NeteaseIOS */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NeteaseIOS;
+			sourceTree = "<group>";
+		};
+		5948F7BAE63C8027095ED034 /* NeteaseAndroid */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NeteaseAndroid;
+			sourceTree = "<group>";
+		};
 		5948FAF3EDDFCBE9517436C6 /* Apple */ = {
 			isa = PBXGroup;
 			children = (
@@ -158,6 +172,13 @@
 			path = Modules;
 			sourceTree = "<group>";
 		};
+		5948FCB5D4F21C01B30DA5F8 /* NeteaseDarwin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NeteaseDarwin;
+			sourceTree = "<group>";
+		};
 		5948FCC5151EC9CD3742C6B5 /* Netease */ = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +189,13 @@
 				5948FB41215087CD316E359F /* NELoginQrKey.swift */,
 			);
 			path = Netease;
+			sourceTree = "<group>";
+		};
+		5948FF8831A9242E19A40CDA /* NeteaseWin */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NeteaseWin;
 			sourceTree = "<group>";
 		};
 		B579CFA42E00C64F00B1F047 /* Frameworks */ = {
@@ -185,6 +213,10 @@
 				5948FAF3EDDFCBE9517436C6 /* Apple */,
 				5948FCC5151EC9CD3742C6B5 /* Netease */,
 				5948FC78B2B2D60969F01648 /* Modules */,
+				5948F7BAE63C8027095ED034 /* NeteaseAndroid */,
+				5948F63423D271333B9DD854 /* NeteaseIOS */,
+				5948FF8831A9242E19A40CDA /* NeteaseWin */,
+				5948FCB5D4F21C01B30DA5F8 /* NeteaseDarwin */,
 			);
 			path = MusicApi;
 			sourceTree = "<group>";
