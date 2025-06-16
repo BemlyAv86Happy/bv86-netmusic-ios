@@ -3,89 +3,125 @@ import SwiftUI
 
 @main
 struct NetmusicApp: App {
-    @State private var navigationPath = NavigationPath() // This is the single, mutable path
+    // Only declare navigationPath for iOS 16+, as it's not used in iOS 15
+    #if os(iOS) && swift(>=5.7) // Check for iOS and Swift 5.7+ (iOS 16 requires Swift 5.7)
+    @State private var navigationPath = NavigationPath() // This is the single, mutable path for iOS 16+
+    #endif
 
     var body: some Scene {
         WindowGroup {
             TabView {
-                // Home Tab: Pass the actual mutable path
-                NavigationStack(path: $navigationPath) { //
-                    HomeView(path: $navigationPath) // Pass the @State binding here
-                        .navigationDestination(for: AppRoute.self) { route in //
-                            ViewForRoute(route: route, path: $navigationPath) // Pass path to ViewForRoute as well
+                // Conditional compilation for iOS 16+ (NavigationStack) vs. iOS 15- (NavigationView)
+                #if os(iOS) && swift(>=5.7) // For iOS 16 and later (using NavigationStack)
+                NavigationStack(path: $navigationPath) {
+                    HomeView(path: $navigationPath)
+                        .navigationDestination(for: AppRoute.self) { route in
+                            ViewForRoute(route: route, path: $navigationPath)
                         }
                 }
-                .tabItem { //
-                    Label(AppRoute.home.title, systemImage: AppRoute.home.iconName) //
+                .tabItem {
+                    Label(AppRoute.home.title, systemImage: AppRoute.home.iconName)
                 }
-                .tag(AppRoute.home) //
+                .tag(AppRoute.home)
 
-                // Other Tabs (also pass the path if they will push views on the *same* stack)
-                // If each tab needs its own independent navigation history, each NavigationStack
-                // would have its own @State NavigationPath. For now, we'll assume a shared path.
-                NavigationStack(path: $navigationPath) { //
+                NavigationStack(path: $navigationPath) {
                     SearchView()
-                        .navigationDestination(for: AppRoute.self) { route in //
-                            ViewForRoute(route: route, path: $navigationPath) //
+                        .navigationDestination(for: AppRoute.self) { route in
+                            ViewForRoute(route: route, path: $navigationPath)
                         }
                 }
-                .tabItem { //
-                    Label(AppRoute.search.title, systemImage: AppRoute.search.iconName) //
+                .tabItem {
+                    Label(AppRoute.search.title, systemImage: AppRoute.search.iconName)
                 }
-                .tag(AppRoute.search) //
+                .tag(AppRoute.search)
 
-                NavigationStack(path: $navigationPath) { //
+                NavigationStack(path: $navigationPath) {
                     ListView()
-                        .navigationDestination(for: AppRoute.self) { route in //
-                            ViewForRoute(route: route, path: $navigationPath) //
+                        .navigationDestination(for: AppRoute.self) { route in
+                            ViewForRoute(route: route, path: $navigationPath)
                         }
                 }
-                .tabItem { //
-                    Label(AppRoute.list.title, systemImage: AppRoute.list.iconName) //
+                .tabItem {
+                    Label(AppRoute.list.title, systemImage: AppRoute.list.iconName)
                 }
-                .tag(AppRoute.list) //
+                .tag(AppRoute.list)
 
-                // History/Favorite Tab
-                NavigationStack(path: $navigationPath) { //
-                    HistoryAndFavoriteView()
-                        .navigationDestination(for: AppRoute.self) { route in //
-                            ViewForRoute(route: route, path: $navigationPath) //
-                        }
-                }
-                .tabItem { //
-                    Label(AppRoute.historyAndFavorite.title, systemImage: AppRoute.historyAndFavorite.iconName) //
-                }
-                .tag(AppRoute.historyAndFavorite) //
-
-                // User Tab
-                NavigationStack(path: $navigationPath) { //
+                NavigationStack(path: $navigationPath) {
                     UserView()
-                        .navigationDestination(for: AppRoute.self) { route in //
-                            ViewForRoute(route: route, path: $navigationPath) //
+                        .navigationDestination(for: AppRoute.self) { route in
+                            ViewForRoute(route: route, path: $navigationPath)
                         }
                 }
-                .tabItem { //
-                    Label(AppRoute.user.title, systemImage: AppRoute.user.iconName) //
+                .tabItem {
+                    Label(AppRoute.user.title, systemImage: AppRoute.user.iconName)
                 }
-                .tag(AppRoute.user) //
+                .tag(AppRoute.user)
+
+                #else // For iOS 15 and earlier (using NavigationView)
+                // Home Tab for iOS 15
+                NavigationView { // Use NavigationView
+                    // HomeView for iOS 15 doesn't take `path` binding in its init
+                    // because NavigationStack/Path isn't available.
+                    // Instead, HomeView's internal buttons will use basic NavigationLink.
+                    HomeViewIos15() // Use a separate HomeView variant for iOS 15 if needed
+                }
+                .tabItem {
+                    Label(AppRoute.home.title, systemImage: AppRoute.home.iconName)
+                }
+                .tag(AppRoute.home)
+
+                // Search Tab for iOS 15
+                NavigationView {
+                    SearchView() // Assuming SearchView doesn't rely on NavigationPath
+                }
+                .tabItem {
+                    Label(AppRoute.search.title, systemImage: AppRoute.search.iconName)
+                }
+                .tag(AppRoute.search)
+
+                // List Tab for iOS 15
+                NavigationView {
+                    ListView() // Assuming ListView doesn't rely on NavigationPath
+                }
+                .tabItem {
+                    Label(AppRoute.list.title, systemImage: AppRoute.list.iconName)
+                }
+                .tag(AppRoute.list)
+
+                // User Tab for iOS 15
+                NavigationView {
+                    UserView() // Assuming UserView doesn't rely on NavigationPath
+                }
+                .tabItem {
+                    Label(AppRoute.user.title, systemImage: AppRoute.user.iconName)
+                }
+                .tag(AppRoute.user)
+
+                #endif
             }
         }
     }
 }
 
-// ViewForRoute also needs access to the path if it creates views that themselves navigate
+// ViewForRoute is primarily for iOS 16+ NavigationStack.
+// For iOS 15 NavigationView, you'll typically use NavigationLink(destination: ...) directly.
+// If you need ViewForRoute to render different content for iOS 15, you'd add conditional logic inside it too.
 struct ViewForRoute: View {
     let route: AppRoute
-    @Binding var path: NavigationPath // Now receives the mutable path
+    // Path is only relevant for iOS 16+
+    #if os(iOS) && swift(>=5.7)
+    @Binding var path: NavigationPath
+    #endif
 
     var body: some View {
         switch route {
         case .home:
-            // If HomeView is the *root* of a NavigationStack, you pass the path here.
-            // However, HomeView is already the root of its tab's NavigationStack,
-            // so this case would typically not be reached via `navigationDestination`.
-            // If it were, it would likely mean popping to root or similar.
-            HomeView(path: $path) // Pass the actual path
+            // This case is unlikely to be hit via navigationDestination from Home tab's root
+            #if os(iOS) && swift(>=5.7)
+            HomeView(path: $path)
+            #else
+            HomeViewIos15() // Fallback for iOS 15
+            #endif
         case .search:
             SearchView()
         case .list:
@@ -96,8 +132,6 @@ struct ViewForRoute: View {
             UserView()
         case .settings:
             SettingsView()
-        // case .songDetail(let id):
-        //     SongDetailView(songId: id)
         }
     }
 }
