@@ -3,8 +3,24 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 63;
 	objects = {
+
+/* Begin PBXBuildFile section */
+		B58FBE952E009F1D00A622E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B58FBE912E009F1D00A622E4 /* Assets.xcassets */; };
+		B58FBE972E009F1D00A622E4 /* router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE802E009F1D00A622E4 /* router.swift */; };
+		B58FBE982E009F1D00A622E4 /* history_favorite.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE822E009F1D00A622E4 /* history_favorite.swift */; };
+		B58FBE992E009F1D00A622E4 /* home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE842E009F1D00A622E4 /* home.swift */; };
+		B58FBE9A2E009F1D00A622E4 /* list.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE862E009F1D00A622E4 /* list.swift */; };
+		B58FBE9B2E009F1D00A622E4 /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE882E009F1D00A622E4 /* search.swift */; };
+		B58FBE9C2E009F1D00A622E4 /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE8A2E009F1D00A622E4 /* setting.swift */; };
+		B58FBE9D2E009F1D00A622E4 /* song_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE8C2E009F1D00A622E4 /* song_detail.swift */; };
+		B58FBE9E2E009F1D00A622E4 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE8E2E009F1D00A622E4 /* user.swift */; };
+		B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE932E009F1D00A622E4 /* netmusicApp.swift */; };
+		B58FBEA22E009F2200A622E4 /* netmusicTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBEA02E009F2200A622E4 /* netmusicTests.swift */; };
+		B58FBEA62E009F2500A622E4 /* netmusicUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBEA32E009F2500A622E4 /* netmusicUITests.swift */; };
+		B58FBEA72E009F2500A622E4 /* netmusicUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBEA42E009F2500A622E4 /* netmusicUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		B58FBE122DFF388A00A622E4 /* PBXContainerItemProxy */ = {
@@ -27,23 +43,21 @@
 		B58FBE042DFF388900A622E4 /* netmusic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = netmusic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58FBE112DFF388A00A622E4 /* netmusicTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = netmusicTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B58FBE1B2DFF388A00A622E4 /* netmusicUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = netmusicUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B58FBE802E009F1D00A622E4 /* router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = router.swift; sourceTree = "<group>"; };
+		B58FBE822E009F1D00A622E4 /* history_favorite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = history_favorite.swift; sourceTree = "<group>"; };
+		B58FBE842E009F1D00A622E4 /* home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home.swift; sourceTree = "<group>"; };
+		B58FBE862E009F1D00A622E4 /* list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list.swift; sourceTree = "<group>"; };
+		B58FBE882E009F1D00A622E4 /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
+		B58FBE8A2E009F1D00A622E4 /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
+		B58FBE8C2E009F1D00A622E4 /* song_detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = song_detail.swift; sourceTree = "<group>"; };
+		B58FBE8E2E009F1D00A622E4 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
+		B58FBE912E009F1D00A622E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		B58FBE922E009F1D00A622E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B58FBE932E009F1D00A622E4 /* netmusicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netmusicApp.swift; sourceTree = "<group>"; };
+		B58FBEA02E009F2200A622E4 /* netmusicTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netmusicTests.swift; sourceTree = "<group>"; };
+		B58FBEA32E009F2500A622E4 /* netmusicUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netmusicUITests.swift; sourceTree = "<group>"; };
+		B58FBEA42E009F2500A622E4 /* netmusicUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netmusicUITestsLaunchTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
-		B58FBE7E2E009A3F00A622E4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
-			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
-			membershipExceptions = (
-				Info.plist,
-			);
-			target = B58FBE032DFF388900A622E4 /* netmusic */;
-		};
-/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		B58FBE062DFF388900A622E4 /* netmusic */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (B58FBE7E2E009A3F00A622E4 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = netmusic; sourceTree = "<group>"; };
-		B58FBE142DFF388A00A622E4 /* netmusicTests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = netmusicTests; sourceTree = "<group>"; };
-		B58FBE1E2DFF388A00A622E4 /* netmusicUITests */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = netmusicUITests; sourceTree = "<group>"; };
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B58FBE012DFF388900A622E4 /* Frameworks */ = {
@@ -73,9 +87,9 @@
 		B58FBDFB2DFF388900A622E4 = {
 			isa = PBXGroup;
 			children = (
-				B58FBE062DFF388900A622E4 /* netmusic */,
-				B58FBE142DFF388A00A622E4 /* netmusicTests */,
-				B58FBE1E2DFF388A00A622E4 /* netmusicUITests */,
+				B58FBE942E009F1D00A622E4 /* netmusic */,
+				B58FBEA12E009F2200A622E4 /* netmusicTests */,
+				B58FBEA52E009F2500A622E4 /* netmusicUITests */,
 				B58FBE052DFF388900A622E4 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +102,121 @@
 				B58FBE1B2DFF388A00A622E4 /* netmusicUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		B58FBE7F2E009F1D00A622E4 /* api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = api;
+			sourceTree = "<group>";
+		};
+		B58FBE812E009F1D00A622E4 /* router */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE802E009F1D00A622E4 /* router.swift */,
+			);
+			path = router;
+			sourceTree = "<group>";
+		};
+		B58FBE832E009F1D00A622E4 /* history_favorite */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE822E009F1D00A622E4 /* history_favorite.swift */,
+			);
+			path = history_favorite;
+			sourceTree = "<group>";
+		};
+		B58FBE852E009F1D00A622E4 /* home */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE842E009F1D00A622E4 /* home.swift */,
+			);
+			path = home;
+			sourceTree = "<group>";
+		};
+		B58FBE872E009F1D00A622E4 /* List */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE862E009F1D00A622E4 /* list.swift */,
+			);
+			path = List;
+			sourceTree = "<group>";
+		};
+		B58FBE892E009F1D00A622E4 /* search */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE882E009F1D00A622E4 /* search.swift */,
+			);
+			path = search;
+			sourceTree = "<group>";
+		};
+		B58FBE8B2E009F1D00A622E4 /* setting */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE8A2E009F1D00A622E4 /* setting.swift */,
+			);
+			path = setting;
+			sourceTree = "<group>";
+		};
+		B58FBE8D2E009F1D00A622E4 /* songdetail */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE8C2E009F1D00A622E4 /* song_detail.swift */,
+			);
+			path = songdetail;
+			sourceTree = "<group>";
+		};
+		B58FBE8F2E009F1D00A622E4 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE8E2E009F1D00A622E4 /* user.swift */,
+			);
+			path = user;
+			sourceTree = "<group>";
+		};
+		B58FBE902E009F1D00A622E4 /* views */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE832E009F1D00A622E4 /* history_favorite */,
+				B58FBE852E009F1D00A622E4 /* home */,
+				B58FBE872E009F1D00A622E4 /* List */,
+				B58FBE892E009F1D00A622E4 /* search */,
+				B58FBE8B2E009F1D00A622E4 /* setting */,
+				B58FBE8D2E009F1D00A622E4 /* songdetail */,
+				B58FBE8F2E009F1D00A622E4 /* user */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		B58FBE942E009F1D00A622E4 /* netmusic */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBE7F2E009F1D00A622E4 /* api */,
+				B58FBE812E009F1D00A622E4 /* router */,
+				B58FBE902E009F1D00A622E4 /* views */,
+				B58FBE912E009F1D00A622E4 /* Assets.xcassets */,
+				B58FBE922E009F1D00A622E4 /* Info.plist */,
+				B58FBE932E009F1D00A622E4 /* netmusicApp.swift */,
+			);
+			path = netmusic;
+			sourceTree = "<group>";
+		};
+		B58FBEA12E009F2200A622E4 /* netmusicTests */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBEA02E009F2200A622E4 /* netmusicTests.swift */,
+			);
+			path = netmusicTests;
+			sourceTree = "<group>";
+		};
+		B58FBEA52E009F2500A622E4 /* netmusicUITests */ = {
+			isa = PBXGroup;
+			children = (
+				B58FBEA32E009F2500A622E4 /* netmusicUITests.swift */,
+				B58FBEA42E009F2500A622E4 /* netmusicUITestsLaunchTests.swift */,
+			);
+			path = netmusicUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -104,9 +233,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				B58FBE062DFF388900A622E4 /* netmusic */,
 			);
 			name = netmusic;
 			packageProductDependencies = (
@@ -128,9 +254,6 @@
 			dependencies = (
 				B58FBE132DFF388A00A622E4 /* PBXTargetDependency */,
 			);
-			fileSystemSynchronizedGroups = (
-				B58FBE142DFF388A00A622E4 /* netmusicTests */,
-			);
 			name = netmusicTests;
 			packageProductDependencies = (
 			);
@@ -150,9 +273,6 @@
 			);
 			dependencies = (
 				B58FBE1D2DFF388A00A622E4 /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				B58FBE1E2DFF388A00A622E4 /* netmusicUITests */,
 			);
 			name = netmusicUITests;
 			packageProductDependencies = (
@@ -210,6 +330,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58FBE952E009F1D00A622E4 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -234,6 +355,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58FBE972E009F1D00A622E4 /* router.swift in Sources */,
+				B58FBE982E009F1D00A622E4 /* history_favorite.swift in Sources */,
+				B58FBE992E009F1D00A622E4 /* home.swift in Sources */,
+				B58FBE9A2E009F1D00A622E4 /* list.swift in Sources */,
+				B58FBE9B2E009F1D00A622E4 /* search.swift in Sources */,
+				B58FBE9C2E009F1D00A622E4 /* setting.swift in Sources */,
+				B58FBE9D2E009F1D00A622E4 /* song_detail.swift in Sources */,
+				B58FBE9E2E009F1D00A622E4 /* user.swift in Sources */,
+				B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -241,6 +371,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58FBEA22E009F2200A622E4 /* netmusicTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,6 +379,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B58FBEA62E009F2500A622E4 /* netmusicUITests.swift in Sources */,
+				B58FBEA72E009F2500A622E4 /* netmusicUITestsLaunchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,9 +7,9 @@ enum AppRoute: Hashable, Identifiable {
     case home
     case search
     case list
-    case historyAndFavorite
+    // case historyAndFavorite // No longer in tab bar, or used in HomeView
     case user
-    case settings
+    // case settings // No longer in tab bar
 }
 
 extension AppRoute {
@@ -18,10 +18,9 @@ extension AppRoute {
         case .home: return "首页"
         case .search: return "搜索"
         case .list: return "歌单"
-        case .historyAndFavorite: return "收藏历史"
+        // case .historyAndFavorite: return "收藏历史"
         case .user: return "用户"
-        case .settings: return "设置"
-//        case .songDetail(_): return "歌曲详情"
+        // case .settings: return "设置"
         }
     }
 
@@ -30,11 +29,9 @@ extension AppRoute {
         case .home: return "house.fill"
         case .search: return "magnifyingglass"
         case .list: return "list.bullet"
-        case .historyAndFavorite: return "star.fill"
+        // case .historyAndFavorite: return "star.fill"
         case .user: return "person.fill"
-        case .settings: return "gearshape.fill"
-//        case .songDetail(_): return "music.note"
+        // case .settings: return "gearshape.fill"
         }
     }
 }
-
