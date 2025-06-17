@@ -30,10 +30,17 @@
 		B58FBE992E009F1D00A622E4 /* home.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE842E009F1D00A622E4 /* home.swift */; };
 		B58FBE9A2E009F1D00A622E4 /* list.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE862E009F1D00A622E4 /* list.swift */; };
 		B58FBE9B2E009F1D00A622E4 /* search.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE882E009F1D00A622E4 /* search.swift */; };
-		B58FBE9C2E009F1D00A622E4 /* setting.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE8A2E009F1D00A622E4 /* setting.swift */; };
 		B58FBE9D2E009F1D00A622E4 /* song_detail.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE8C2E009F1D00A622E4 /* song_detail.swift */; };
 		B58FBE9E2E009F1D00A622E4 /* user.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE8E2E009F1D00A622E4 /* user.swift */; };
 		B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B58FBE932E009F1D00A622E4 /* netmusicApp.swift */; };
+		B596F9192E01F2F200CB2BCB /* SettingItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596F9182E01F2F200CB2BCB /* SettingItemView.swift */; };
+		B596F91B2E01F31E00CB2BCB /* SettingsSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596F91A2E01F31E00CB2BCB /* SettingsSection.swift */; };
+		B596F91D2E01F35D00CB2BCB /* BasicSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596F91C2E01F35D00CB2BCB /* BasicSettingsView.swift */; };
+		B596F9202E01F3AC00CB2BCB /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596F91F2E01F39B00CB2BCB /* LocalizationManager.swift */; };
+		B596F9222E01F3CF00CB2BCB /* Bundle+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596F9212E01F3CE00CB2BCB /* Bundle+Localization.swift */; };
+		B596F9242E01F47B00CB2BCB /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B596F9232E01F47B00CB2BCB /* SettingsView.swift */; };
+		B596F9272E01F4E200CB2BCB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B596F9252E01F4E200CB2BCB /* Localizable.strings */; };
+		B596F92C2E01F78600CB2BCB /* thought.md in Resources */ = {isa = PBXBuildFile; fileRef = B596F92B2E01F78000CB2BCB /* thought.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,12 +109,22 @@
 		B58FBE842E009F1D00A622E4 /* home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = home.swift; sourceTree = "<group>"; };
 		B58FBE862E009F1D00A622E4 /* list.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = list.swift; sourceTree = "<group>"; };
 		B58FBE882E009F1D00A622E4 /* search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = search.swift; sourceTree = "<group>"; };
-		B58FBE8A2E009F1D00A622E4 /* setting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = setting.swift; sourceTree = "<group>"; };
 		B58FBE8C2E009F1D00A622E4 /* song_detail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = song_detail.swift; sourceTree = "<group>"; };
 		B58FBE8E2E009F1D00A622E4 /* user.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = user.swift; sourceTree = "<group>"; };
 		B58FBE912E009F1D00A622E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B58FBE922E009F1D00A622E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B58FBE932E009F1D00A622E4 /* netmusicApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = netmusicApp.swift; sourceTree = "<group>"; };
+		B596F9182E01F2F200CB2BCB /* SettingItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemView.swift; sourceTree = "<group>"; };
+		B596F91A2E01F31E00CB2BCB /* SettingsSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSection.swift; sourceTree = "<group>"; };
+		B596F91C2E01F35D00CB2BCB /* BasicSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicSettingsView.swift; sourceTree = "<group>"; };
+		B596F91F2E01F39B00CB2BCB /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		B596F9212E01F3CE00CB2BCB /* Bundle+Localization.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Bundle+Localization.swift"; sourceTree = "<group>"; };
+		B596F9232E01F47B00CB2BCB /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		B596F9262E01F4E200CB2BCB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B596F9282E01F51F00CB2BCB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		B596F9292E01F51F00CB2BCB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		B596F92A2E01F51F00CB2BCB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
+		B596F92B2E01F78000CB2BCB /* thought.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = thought.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,7 +333,11 @@
 		B58FBE8B2E009F1D00A622E4 /* setting */ = {
 			isa = PBXGroup;
 			children = (
-				B58FBE8A2E009F1D00A622E4 /* setting.swift */,
+				B596F92B2E01F78000CB2BCB /* thought.md */,
+				B596F9232E01F47B00CB2BCB /* SettingsView.swift */,
+				B596F9182E01F2F200CB2BCB /* SettingItemView.swift */,
+				B596F91A2E01F31E00CB2BCB /* SettingsSection.swift */,
+				B596F91C2E01F35D00CB2BCB /* BasicSettingsView.swift */,
 			);
 			path = setting;
 			sourceTree = "<group>";
@@ -354,6 +375,7 @@
 		B58FBE942E009F1D00A622E4 /* netmusic */ = {
 			isa = PBXGroup;
 			children = (
+				B596F91E2E01F38F00CB2BCB /* i18n */,
 				B58FBE7F2E009F1D00A622E4 /* api */,
 				B58FBE812E009F1D00A622E4 /* router */,
 				B58FBE902E009F1D00A622E4 /* views */,
@@ -362,6 +384,16 @@
 				B58FBE932E009F1D00A622E4 /* netmusicApp.swift */,
 			);
 			path = netmusic;
+			sourceTree = "<group>";
+		};
+		B596F91E2E01F38F00CB2BCB /* i18n */ = {
+			isa = PBXGroup;
+			children = (
+				B596F9212E01F3CE00CB2BCB /* Bundle+Localization.swift */,
+				B596F91F2E01F39B00CB2BCB /* LocalizationManager.swift */,
+				B596F9252E01F4E200CB2BCB /* Localizable.strings */,
+			);
+			path = i18n;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -485,6 +517,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = B58FBDFB2DFF388900A622E4;
 			productRefGroup = B58FBE052DFF388900A622E4 /* Products */;
@@ -528,7 +561,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B596F92C2E01F78600CB2BCB /* thought.md in Resources */,
 				B58FBE952E009F1D00A622E4 /* Assets.xcassets in Resources */,
+				B596F9272E01F4E200CB2BCB /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,11 +608,16 @@
 				B58FBE972E009F1D00A622E4 /* router.swift in Sources */,
 				B58FBE982E009F1D00A622E4 /* history_favorite.swift in Sources */,
 				B58FBE992E009F1D00A622E4 /* home.swift in Sources */,
+				B596F91B2E01F31E00CB2BCB /* SettingsSection.swift in Sources */,
+				B596F9202E01F3AC00CB2BCB /* LocalizationManager.swift in Sources */,
+				B596F91D2E01F35D00CB2BCB /* BasicSettingsView.swift in Sources */,
 				B58FBE9A2E009F1D00A622E4 /* list.swift in Sources */,
+				B596F9242E01F47B00CB2BCB /* SettingsView.swift in Sources */,
 				B58FBE9B2E009F1D00A622E4 /* search.swift in Sources */,
-				B58FBE9C2E009F1D00A622E4 /* setting.swift in Sources */,
+				B596F9192E01F2F200CB2BCB /* SettingItemView.swift in Sources */,
 				B58FBE9D2E009F1D00A622E4 /* song_detail.swift in Sources */,
 				B58FBE9E2E009F1D00A622E4 /* user.swift in Sources */,
+				B596F9222E01F3CF00CB2BCB /* Bundle+Localization.swift in Sources */,
 				B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -603,6 +643,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				B579CFE92E00D2FE00B1F047 /* Base */,
+				B596F9282E01F51F00CB2BCB /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -611,8 +652,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				B579CFEE2E00D2FF00B1F047 /* Base */,
+				B596F9292E01F51F00CB2BCB /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		B596F9252E01F4E200CB2BCB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B596F9262E01F4E200CB2BCB /* en */,
+				B596F92A2E01F51F00CB2BCB /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -800,6 +851,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -863,6 +915,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

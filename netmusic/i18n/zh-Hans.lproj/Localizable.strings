@@ -1,7 +1,88 @@
-/* 
-  Localizable.strings
-  netmusic
+"AppRoute.title.home" = "首页";
+"AppRoute.title.search" = "搜索";
+"AppRoute.title.user" = "用户";
+"AppRoute.title.settings" = "设置";
 
-  Created by Bemly on 2025/6/18.
-  
-*/
+"settings.sections.basic" = "基础设置";
+"settings.sections.playback" = "播放设置";
+"settings.sections.application" = "应用设置";
+"settings.sections.network" = "网络设置";
+"settings.sections.system" = "系统管理";
+"settings.regard" = "关于";
+"settings.sections.donation" = "捐赠支持";
+
+"settings.basic.themeMode" = "主题模式";
+"settings.basic.themeModeDesc" = "切换应用亮色或暗色主题";
+"settings.basic.language" = "语言";
+"settings.basic.languageDesc" = "更改应用显示语言";
+"settings.basic.animation" = "动画效果";
+"settings.basic.animationDesc" = "禁用或调整应用内动画速度";
+"settings.basic.animationSpeed.slow" = "慢";
+"settings.basic.animationSpeed.normal" = "正常";
+"settings.basic.animationSpeed.fast" = "快";
+
+"settings.playback.quality" = "音质";
+"settings.playback.qualityDesc" = "选择音乐播放的默认音质";
+"settings.playback.qualityOptions.standard" = "标准";
+"settings.playback.qualityOptions.higher" = "较高";
+"settings.playback.qualityOptions.exhigh" = "极高";
+"settings.playback.qualityOptions.lossless" = "无损";
+"settings.playback.qualityOptions.hires" = "Hi-Res";
+"settings.playback.qualityOptions.jyeffect" = "高清环绕音";
+"settings.playback.qualityOptions.sky" = "沉浸环绕音";
+"settings.playback.qualityOptions.dolby" = "杜比全景声";
+"settings.playback.qualityOptions.jymaster" = "超清母带";
+"settings.playback.playbackRate" = "播放速率";
+"settings.playback.playbackRateDesc" = "调整歌曲播放速度";
+"settings.playback.autoPlay" = "自动播放";
+"settings.playback.autoPlayDesc" = "应用启动时自动开始播放音乐";
+"settings.playback.cache" = "缓存";
+"settings.playback.cacheDesc" = "设置音乐缓存限制 (MB)";
+"settings.playback.loopOneSong" = "单曲循环";
+"settings.playback.loopOneSongDesc" = "播放列表结束后是否循环当前歌曲";
+"settings.playback.lyrics" = "桌面歌词";
+"settings.playback.lyricsDesc" = "在桌面显示当前播放歌曲的歌词";
+"settings.playback.lyricsDisplayMode" = "歌词显示模式";
+"settings.playback.lyricsDisplayMode.overlay" = "覆盖模式";
+"settings.playback.lyricsDisplayMode.desktop" = "桌面模式";
+"settings.playback.lyricsFontSize" = "歌词字体大小";
+"settings.playback.lyricsOpacity" = "歌词透明度";
+"settings.playback.lyricsBackgroundColor" = "歌词背景色";
+
+"settings.application.updateSettings" = "更新设置";
+"settings.application.updateSettingsDesc" = "自动检查应用更新";
+"settings.application.homepageRecommend" = "主页推荐";
+"settings.application.homepageRecommendDesc" = "在主页显示个性化推荐内容";
+"settings.application.notifications" = "通知";
+"settings.application.notificationsDesc" = "启用或禁用应用通知";
+
+"settings.network.proxy" = "代理";
+"settings.network.proxyDesc" = "配置应用网络代理";
+"settings.network.proxyMode.none" = "不使用代理";
+"settings.network.proxyMode.system" = "使用系统代理";
+"settings.network.proxyMode.custom" = "使用自定义代理";
+"settings.network.customProxyServer" = "自定义代理服务器";
+"settings.network.customProxyServerDesc" = "例如：http://localhost:8080";
+"settings.network.checkUpdateProxy" = "检查更新代理";
+"settings.network.checkUpdateProxyDesc" = "检查更新时是否使用代理";
+"settings.network.cookieRefreshInterval" = "Cookie 刷新间隔";
+"settings.network.cookieRefreshIntervalDesc" = "登录会话自动刷新间隔 (小时)";
+
+"settings.system.clearCache" = "清除缓存";
+"settings.system.clearCacheDesc" = "清除所有应用缓存数据";
+"settings.system.clearSongFiles" = "清除歌曲文件";
+"settings.system.clearSongFilesDesc" = "清除所有下载的歌曲文件";
+"settings.system.developerTools" = "开发者工具";
+"settings.system.developerToolsDesc" = "打开开发者调试工具";
+
+"settings.about.version" = "版本信息";
+"settings.about.versionDesc" = "当前应用版本";
+"settings.about.author" = "作者信息";
+"settings.about.authorDesc" = "作者及项目链接";
+
+"common.on" = "开启";
+"common.off" = "关闭";
+"common.show" = "显示";
+"common.hide" = "隐藏";
+"common.confirm" = "确认";
+"common.cancel" = "取消";

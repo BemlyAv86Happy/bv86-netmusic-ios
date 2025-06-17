@@ -1,7 +1,88 @@
-/* 
-  Localizable.strings
-  netmusic
+"AppRoute.title.home" = "home";
+"AppRoute.title.search" = "search";
+"AppRoute.title.user" = "user";
+"AppRoute.title.settings" = "settings";
 
-  Created by Bemly on 2025/6/18.
-  
-*/
+"settings.sections.basic" = "Basic Settings";
+"settings.sections.playback" = "Playback Settings";
+"settings.sections.application" = "Application Settings";
+"settings.sections.network" = "Network Settings";
+"settings.sections.system" = "System Management";
+"settings.regard" = "About";
+"settings.sections.donation" = "Donation Support";
+
+"settings.basic.themeMode" = "Theme Mode";
+"settings.basic.themeModeDesc" = "Switch app light or dark theme";
+"settings.basic.language" = "Language";
+"settings.basic.languageDesc" = "Change app display language";
+"settings.basic.animation" = "Animation Effect";
+"settings.basic.animationDesc" = "Disable or adjust in-app animation speed";
+"settings.basic.animationSpeed.slow" = "Slow";
+"settings.basic.animationSpeed.normal" = "Normal";
+"settings.basic.animationSpeed.fast" = "Fast";
+
+"settings.playback.quality" = "Audio Quality";
+"settings.playback.qualityDesc" = "Select default audio quality for music playback";
+"settings.playback.qualityOptions.standard" = "Standard";
+"settings.playback.qualityOptions.higher" = "Higher";
+"settings.playback.qualityOptions.exhigh" = "Extreme High";
+"settings.playback.qualityOptions.lossless" = "Lossless";
+"settings.playback.qualityOptions.hires" = "Hi-Res";
+"settings.playback.qualityOptions.jyeffect" = "HD Surround Sound";
+"settings.playback.qualityOptions.sky" = "Immersive Surround Sound";
+"settings.playback.qualityOptions.dolby" = "Dolby Atmos";
+"settings.playback.qualityOptions.jymaster" = "Ultra HD Master";
+"settings.playback.playbackRate" = "Playback Rate";
+"settings.playback.playbackRateDesc" = "Adjust song playback speed";
+"settings.playback.autoPlay" = "Auto Play";
+"settings.playback.autoPlayDesc" = "Automatically start playing music when the app launches";
+"settings.playback.cache" = "Cache";
+"settings.playback.cacheDesc" = "Set music cache limit (MB)";
+"settings.playback.loopOneSong" = "Loop One Song";
+"settings.playback.loopOneSongDesc" = "Whether to loop the current song after the playlist ends";
+"settings.playback.lyrics" = "Desktop Lyrics";
+"settings.playback.lyricsDesc" = "Display lyrics of the current song on the desktop";
+"settings.playback.lyricsDisplayMode" = "Lyrics Display Mode";
+"settings.playback.lyricsDisplayMode.overlay" = "Overlay Mode";
+"settings.playback.lyricsDisplayMode.desktop" = "Desktop Mode";
+"settings.playback.lyricsFontSize" = "Lyrics Font Size";
+"settings.playback.lyricsOpacity" = "Lyrics Opacity";
+"settings.playback.lyricsBackgroundColor" = "Lyrics Background Color";
+
+"settings.application.updateSettings" = "Update Settings";
+"settings.application.updateSettingsDesc" = "Automatically check for app updates";
+"settings.application.homepageRecommend" = "Homepage Recommendation";
+"settings.application.homepageRecommendDesc" = "Display personalized recommendations on the homepage";
+"settings.application.notifications" = "Notifications";
+"settings.application.notificationsDesc" = "Enable or disable app notifications";
+
+"settings.network.proxy" = "Proxy";
+"settings.network.proxyDesc" = "Configure app network proxy";
+"settings.network.proxyMode.none" = "No Proxy";
+"settings.network.proxyMode.system" = "Use System Proxy";
+"settings.network.proxyMode.custom" = "Use Custom Proxy";
+"settings.network.customProxyServer" = "Custom Proxy Server";
+"settings.network.customProxyServerDesc" = "e.g., http://localhost:8080";
+"settings.network.checkUpdateProxy" = "Check Update Proxy";
+"settings.network.checkUpdateProxyDesc" = "Use proxy when checking for updates";
+"settings.network.cookieRefreshInterval" = "Cookie Refresh Interval";
+"settings.network.cookieRefreshIntervalDesc" = "Automatic refresh interval for login session (hours)";
+
+"settings.system.clearCache" = "Clear Cache";
+"settings.system.clearCacheDesc" = "Clear all app cache data";
+"settings.system.clearSongFiles" = "Clear Song Files";
+"settings.system.clearSongFilesDesc" = "Clear all downloaded song files";
+"settings.system.developerTools" = "Developer Tools";
+"settings.system.developerToolsDesc" = "Open developer debugging tools";
+
+"settings.about.version" = "Version Information";
+"settings.about.versionDesc" = "Current app version";
+"settings.about.author" = "Author Information";
+"settings.about.authorDesc" = "Author and project links";
+
+"common.on" = "On";
+"common.off" = "Off";
+"common.show" = "Show";
+"common.hide" = "Hide";
+"common.confirm" = "Confirm";
+"common.cancel" = "Cancel";

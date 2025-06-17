@@ -1,26 +1,21 @@
-// views/home/home.swift
-
 import SwiftUI
 
 struct HomeView: View {
+    // 注入 localizationManager
+    @EnvironmentObject var localizationManager: LocalizationManager
+
+    // 计算属性，返回动态本地化的 Text 视图作为导航标题
+    var localizedNavigationTitle: Text {
+        Text(LocalizedStringKey(AppRoute.home.titleKey), bundle: localizationManager.bundle)
+    }
+
     var body: some View {
         GeometryReader { geometry in
-            // The ZStack allows us to place the background color behind other content
-            ZStack {
-                // Background color occupying the entire screen area
-                Color.yellow.opacity(0.3)                  .edgesIgnoringSafeArea(.all)
-                
-                VStack(spacing: 0) {
-                    // Top Spacer to push ListView down
-                    Spacer()
-
-                    // ListView component, centered vertically by the Spacers
-                    ListView()
-                    Spacer()
-                }
-            }
+            ListView()
+                .frame(maxWidth: .infinity, maxHeight: .infinity)
         }
-        .navigationTitle(AppRoute.home.title)
+        // 修正：将 Text 视图作为参数直接传递给 navigationTitle
+        .navigationTitle(localizedNavigationTitle)
     }
 }
 
@@ -29,19 +24,8 @@ struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             HomeView()
+                // 预览时也要注入 localizationManager
+                .environmentObject(LocalizationManager())
         }
     }
 }
-
-/*
-// Placeholder Views for compilation - ensure these are defined in your project, e.g., in their own files
-struct ListView: View {
-    var body: some View {
-        Text("This is the List Screen (API Content Placeholder)")
-            .font(.title)
-            .navigationTitle(AppRoute.list.title)
-            .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color.mint.opacity(0.1))
-    }
-}
-*/
