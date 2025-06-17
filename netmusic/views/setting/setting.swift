@@ -1,19 +1,7 @@
 //
-//  setting.swift
+//  Untitled.swift
 //  netmusic
 //
-//  Created by Bemly on 2025/6/16.
+//  Created by Bemly on 2025/6/17.
 //
-import SwiftUI
 
-struct SettingsView: View {
-    var body: some View {
-        Text("SettingView!")
-    }
-}
-
-struct Setting_Previews: PreviewProvider {
-    static var previews: some View  {
-        SettingsView()
-    }
-}
