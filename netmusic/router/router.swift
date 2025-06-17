@@ -14,7 +14,7 @@ enum AppRoute: Hashable, Identifiable {
 
 extension AppRoute {
     var title: String {
-        switch self {
+        witch self {
         case .home: return "首页"
         case .search: return "搜索"
         case .list: return "歌单"
