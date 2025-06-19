@@ -5,31 +5,70 @@ struct BasicSettingsView: View {
     @EnvironmentObject var themeManager: ThemeManager
     // 使用 @EnvironmentObject 来访问全局语言管理器
     @EnvironmentObject var localizationManager: LocalizationManager
-
     // 控制动画速度选择器是否显示的 State 变量
     @State private var showAnimationSpeedPicker: Bool = false
     // 动画效果的状态变量，默认为 "normal"
     @State private var animationSpeed: String = "normal" // "slow", "normal", "fast"
-
+    // 用于触发动画的状态变量    
+    @State private var triggerAnimation: Bool = false // 用于触发动画
+    // 主题选择的状态变量，默认为亮色主题
+    @State private var selectedTheme: ColorScheme = .light // 默认主题为亮色
+    
+    // 匹配属性，根据动画速度返回对应的动画持续时间
+    private var animationDuration: Double {
+        switch animationSpeed {
+        case "slow": return 1.0 // 慢速动画
+        case "normal": return 0.6 // 一般动画
+        case "fast": return 0.1 // 快速动画
+        default: return 0.6 // 默认动画速度
+        }
+    }
+    
     var body: some View {
         Group {
             // MARK: - 主题模式 (Theme Mode)
             SettingItemView(titleKey: "settings.basic.themeMode", descriptionKey: "settings.basic.themeModeDesc") {
+                ZStack{
+                    // 圆圈动画
+                    if showAnimationSpeedPicker {
+                        Circle()
+                            .fill(selectedTheme == .light ? Color.white : Color.black)
+                            .opacity(triggerAnimation ? 0 : 1) // 根据 triggerAnimation 控制透明度
+                            .scaleEffect(triggerAnimation ? 10 : 0.01) // 根据 triggerAnimation 控制缩放
+                            .animation(.easeInOut(duration: animationDuration), value: triggerAnimation) // 使用动画持续时间
+                    }
+                }
+
                 // 使用 Picker 直接绑定到 themeManager.currentColorScheme
                 Picker("", selection: Binding<ColorScheme>(
-                    get: { themeManager.currentColorScheme ?? .light }, // 如果为 nil，默认为 .light
-                    set: { newScheme in
-                        themeManager.currentColorScheme = newScheme // 更新 ThemeManager 中的主题
+                        get: { themeManager.currentColorScheme ?? .light },
+                        set: { newScheme in
+                            if newScheme != themeManager.currentColorScheme {
+                                // 更新 selectedTheme 和触发动画
+                                selectedTheme = newScheme
+                                // 如果 showAnimationSpeedPicker 为 true，则触发动画
+                                if showAnimationSpeedPicker {
+                                    withAnimation {
+                                        triggerAnimation = true
+                                    }
+                                    // 完成后重置动画
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+                                        triggerAnimation = false
+                                        themeManager.currentColorScheme = newScheme
+                                    }
+                                } else {
+                                    themeManager.currentColorScheme = newScheme
+                                }
+                            }
+                        }
+                    )) {
+                        Label("亮色", systemImage: "sun.max.fill").tag(ColorScheme.light)
+                        Label("暗色", systemImage: "moon.fill").tag(ColorScheme.dark)
                     }
-                )) {
-                    Label("亮色", systemImage: "sun.max.fill") // 亮色图标
-                        .tag(ColorScheme.light)
-                    Label("暗色", systemImage: "moon.fill") // 暗色图标
-                        .tag(ColorScheme.dark)
+                    .pickerStyle(.segmented)
+                    .fixedSize()
+                    .padding(.trailing, -8)
                 }
-                .pickerStyle(.segmented) // 分段选择器样式
-                .fixedSize() // 防止 picker 宽度过大
-                .padding(.trailing, -8) // 微调间距
             }
 
             // MARK: - 语言 (Language)
