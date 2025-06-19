@@ -27,8 +27,30 @@ struct BasicSettingsView: View {
 
     @State private var showAnimationSpeedPicker: Bool = false
     @State private var animationSpeed: AnimationSpeed = .normal
-    @State private var triggerAnimation: Bool = false
+    @State private var triggerThemeAnimation: Bool = false
     @State private var selectedTheme: ColorScheme = .light
+    // New states for language animation
+    @State private var triggerLanguageAnimation: Bool = false
+    @State private var targetLanguageCode: String = "zh-Hans"
+    @State private var scrambledText: String = ""
+
+    // Function to generate scrambled text
+    private func generateScrambledText() -> String {
+        let characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789"
+        return String((0..<10).map { _ in characters.randomElement()! })
+    }
+
+    // Update scrambled text during animation
+    private func startScrambleAnimation() {
+        guard showAnimationSpeedPicker else { return }
+        let timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { timer in
+            scrambledText = generateScrambledText()
+            if !triggerLanguageAnimation {
+                timer.invalidate()
+            }
+        }
+        RunLoop.main.add(timer, forMode: .common)
+    }
 
     var body: some View {
         Group {
@@ -39,9 +61,9 @@ struct BasicSettingsView: View {
                     if showAnimationSpeedPicker {
                         Circle()
                             .fill(selectedTheme == .light ? Color.white : Color.black)
-                            .opacity(triggerAnimation ? 0 : 1)
-                            .scaleEffect(triggerAnimation ? 10 : 0.01)
-                            .animation(.easeOut(duration: animationSpeed.duration), value: triggerAnimation)
+                            .opacity(triggerThemeAnimation ? 0 : 1)
+                            .scaleEffect(triggerThemeAnimation ? 10 : 0.01)
+                            .animation(.easeOut(duration: animationSpeed.duration), value: triggerThemeAnimation)
                     }
 
                     // Theme Mode Picker
@@ -52,10 +74,10 @@ struct BasicSettingsView: View {
                                 selectedTheme = newScheme
                                 if showAnimationSpeedPicker {
                                     withAnimation {
-                                        triggerAnimation = true
+                                        triggerThemeAnimation = true
                                     }
                                     DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.duration) {
-                                        triggerAnimation = false
+                                        triggerThemeAnimation = false
                                         themeManager.currentColorScheme = newScheme
                                     }
                                 } else {
@@ -75,11 +97,45 @@ struct BasicSettingsView: View {
 
             // MARK: - 语言 (Language)
             SettingItemView(titleKey: "settings.basic.language", descriptionKey: "settings.basic.languageDesc") {
-                Picker("", selection: $localizationManager.selectedLanguageCode) {
-                    Text("中文 (简体)").tag("zh-Hans")
-                    Text("English").tag("en")
+                ZStack {
+                    // Language Picker
+                    Picker("", selection: Binding<String>(
+                        get: { localizationManager.selectedLanguageCode },
+                        set: { newLanguageCode in
+                            if newLanguageCode != localizationManager.selectedLanguageCode {
+                                targetLanguageCode = newLanguageCode
+                                if showAnimationSpeedPicker {
+                                    withAnimation {
+                                        triggerLanguageAnimation = true
+                                        scrambledText = generateScrambledText()
+                                        startScrambleAnimation()
+                                    }
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.duration) {
+                                        triggerLanguageAnimation = false
+                                        localizationManager.selectedLanguageCode = newLanguageCode
+                                    }
+                                } else {
+                                    localizationManager.selectedLanguageCode = newLanguageCode
+                                }
+                            }
+                        }
+                    )) {
+                        Text("中文 (简体)").tag("zh-Hans")
+                        Text("English").tag("en")
+                    }
+                    .fixedSize()
+                    .opacity(triggerLanguageAnimation ? 0 : 1) // Hide picker during animation
+
+                    // Scramble Animation Overlay
+                    if triggerLanguageAnimation && showAnimationSpeedPicker {
+                        Text(scrambledText)
+                            .font(.body)
+                            .foregroundColor(.gray)
+                            .fixedSize()
+                            .transition(.opacity)
+                            .animation(.easeInOut(duration: 0.1), value: scrambledText)
+                    }
                 }
-                .fixedSize()
             }
 
             // MARK: - 动画效果 (Animation Effect)
