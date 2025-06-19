@@ -1,58 +1,60 @@
 import SwiftUI
 
-struct BasicSettingsView: View {
-    // 使用 @EnvironmentObject 来访问全局主题管理器
-    @EnvironmentObject var themeManager: ThemeManager
-    // 使用 @EnvironmentObject 来访问全局语言管理器
-    @EnvironmentObject var localizationManager: LocalizationManager
-    // 控制动画速度选择器是否显示的 State 变量
-    @State private var showAnimationSpeedPicker: Bool = false
-    // 动画效果的状态变量，默认为 "normal"
-    @State private var animationSpeed: String = "normal" // "slow", "normal", "fast"
-    // 用于触发动画的状态变量    
-    @State private var triggerAnimation: Bool = false // 用于触发动画
-    // 主题选择的状态变量，默认为亮色主题
-    @State private var selectedTheme: ColorScheme = .light // 默认主题为亮色
-    
-    // 匹配属性，根据动画速度返回对应的动画持续时间
-    private var animationDuration: Double {
-        switch animationSpeed {
-        case "slow": return 1.0 // 慢速动画
-        case "normal": return 0.6 // 一般动画
-        case "fast": return 0.1 // 快速动画
-        default: return 0.6 // 默认动画速度
+// 定义 AnimationSpeed 枚举
+enum AnimationSpeed: String, CaseIterable {
+    case slow = "slow"
+    case normal = "normal"
+    case fast = "fast"
+
+    // 计算动画持续时间
+    var duration: Double {
+        switch self {
+        case .slow: return 1.0
+        case .normal: return 0.6
+        case .fast: return 0.3
         }
     }
-    
+
+    // 获取本地化键，用于 Picker 显示
+    var localizedKey: String {
+        "settings.basic.animationSpeed.\(rawValue)"
+    }
+}
+
+struct BasicSettingsView: View {
+    @EnvironmentObject var themeManager: ThemeManager
+    @EnvironmentObject var localizationManager: LocalizationManager
+
+    @State private var showAnimationSpeedPicker: Bool = false
+    @State private var animationSpeed: AnimationSpeed = .normal
+    @State private var triggerAnimation: Bool = false
+    @State private var selectedTheme: ColorScheme = .light
+
     var body: some View {
         Group {
             // MARK: - 主题模式 (Theme Mode)
             SettingItemView(titleKey: "settings.basic.themeMode", descriptionKey: "settings.basic.themeModeDesc") {
-                ZStack{
-                    // 圆圈动画
+                ZStack {
+                    // Animation Circle
                     if showAnimationSpeedPicker {
                         Circle()
                             .fill(selectedTheme == .light ? Color.white : Color.black)
-                            .opacity(triggerAnimation ? 0 : 1) // 根据 triggerAnimation 控制透明度
-                            .scaleEffect(triggerAnimation ? 10 : 0.01) // 根据 triggerAnimation 控制缩放
-                            .animation(.easeInOut(duration: animationDuration), value: triggerAnimation) // 使用动画持续时间
+                            .opacity(triggerAnimation ? 0 : 1)
+                            .scaleEffect(triggerAnimation ? 10 : 0.01)
+                            .animation(.easeOut(duration: animationSpeed.duration), value: triggerAnimation)
                     }
-                }
 
-                // 使用 Picker 直接绑定到 themeManager.currentColorScheme
-                Picker("", selection: Binding<ColorScheme>(
+                    // Theme Mode Picker
+                    Picker("", selection: Binding<ColorScheme>(
                         get: { themeManager.currentColorScheme ?? .light },
                         set: { newScheme in
                             if newScheme != themeManager.currentColorScheme {
-                                // 更新 selectedTheme 和触发动画
                                 selectedTheme = newScheme
-                                // 如果 showAnimationSpeedPicker 为 true，则触发动画
                                 if showAnimationSpeedPicker {
                                     withAnimation {
                                         triggerAnimation = true
                                     }
-                                    // 完成后重置动画
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + animationDuration) {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + animationSpeed.duration) {
                                         triggerAnimation = false
                                         themeManager.currentColorScheme = newScheme
                                     }
@@ -73,49 +75,44 @@ struct BasicSettingsView: View {
 
             // MARK: - 语言 (Language)
             SettingItemView(titleKey: "settings.basic.language", descriptionKey: "settings.basic.languageDesc") {
-                // 使用 Picker 直接绑定到 localizationManager.selectedLanguageCode
                 Picker("", selection: $localizationManager.selectedLanguageCode) {
-                    Text("中文 (简体)").tag("zh-Hans") // 标签使用硬编码，因为这是 Picker 本身的选择项
+                    Text("中文 (简体)").tag("zh-Hans")
                     Text("English").tag("en")
-                    // 可以添加更多语言选项
                 }
-                .fixedSize() // 防止 picker 宽度过大
+                .fixedSize()
             }
 
             // MARK: - 动画效果 (Animation Effect)
-            VStack(alignment: .leading) { // 使用 VStack 来容纳 Toggle 和可能展开的 Picker
+            VStack(alignment: .leading) {
                 SettingItemView(titleKey: "settings.basic.animation", descriptionKey: "settings.basic.animationDesc") {
-                    Toggle(isOn: $showAnimationSpeedPicker) {
-//                        Text(showAnimationSpeedPicker ? "启用动画" : "禁用动画") // 根据状态显示不同文本
-                    }
+                    Toggle(isOn: $showAnimationSpeedPicker) {}
                 }
 
-                // 根据 showAnimationSpeedPicker 的状态条件性地显示 Picker
                 if showAnimationSpeedPicker {
                     Picker("", selection: $animationSpeed) {
-                        Text(LocalizedStringKey("settings.basic.animationSpeed.slow"), bundle: localizationManager.bundle).tag("slow")
-                        Text(LocalizedStringKey("settings.basic.animationSpeed.normal"), bundle: localizationManager.bundle).tag("normal")
-                        Text(LocalizedStringKey("settings.basic.animationSpeed.fast"), bundle: localizationManager.bundle).tag("fast")
+                        ForEach(AnimationSpeed.allCases, id: \.self) { speed in
+                            Text(LocalizedStringKey(speed.localizedKey), bundle: localizationManager.bundle)
+                                .tag(speed)
+                        }
                     }
                     .pickerStyle(.segmented)
-                    .padding(.leading, 15) // 与 SettingItemView 对齐，或者根据需要调整
+                    .padding(.leading, 15)
                     .padding(.trailing, 10)
-                    .transition(.opacity.combined(with: .slide)) // 添加过渡动画
+                    .transition(.opacity.combined(with: .slide))
                 }
             }
-            .animation(.easeInOut, value: showAnimationSpeedPicker) // 整个 VStack 的动画，当 showAnimationSpeedPicker 改变时触发
+            .animation(.easeInOut, value: showAnimationSpeedPicker)
         }
     }
 }
 
-// 预览 BasicSettingsView
+// 预览保持不变
 struct BasicSettingsView_Previews: PreviewProvider {
     static var previews: some View {
         List {
             BasicSettingsView()
-                .environmentObject(ThemeManager()) // 预览时也要注入 ThemeManager
-                .environmentObject(LocalizationManager()) // 预览时也要注入 LocalizationManager
+                .environmentObject(ThemeManager())
+                .environmentObject(LocalizationManager())
         }
     }
 }
-
