@@ -32,7 +32,10 @@ struct SettingsView: View {
                 List {
                     // MARK: - 基础设置 (Basic Settings)
                     SettingsSection(titleKey: "settings.sections.basic") {
-                        BasicSettingsView(triggerThemeAnimation: $triggerThemeAnimation, selectedTheme: $selectedTheme,animationSpeed: $animationSpeed)
+                        BasicSettingsView(
+                                triggerThemeAnimation: $triggerThemeAnimation,
+                                selectedTheme: $selectedTheme,
+                                animationSpeed: $animationSpeed)
                     }
 
                     // MARK: - 播放设置 (Playback Settings)
