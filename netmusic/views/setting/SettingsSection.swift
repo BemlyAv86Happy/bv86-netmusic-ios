@@ -24,10 +24,15 @@ struct SettingsSection_Previews: PreviewProvider {
     static var previews: some View {
         List {
             SettingsSection(titleKey: "settings.sections.basic") {
-                SettingItemView(titleKey: "settings.basic.themeMode", descriptionKey: "settings.basic.themeModeDesc") {
+                SettingItemView(
+                        titleKey: "settings.basic.themeMode",
+                        descriptionKey: "settings.basic.themeModeDesc",
+                        isScrambling: false) {
                     Text("Theme Mode Selector")
                 }
-                SettingItemView(titleKey: "settings.basic.language", descriptionKey: "settings.basic.languageDesc") {
+                SettingItemView(titleKey: "settings.basic.language",
+                                descriptionKey: "settings.basic.languageDesc",
+                                isScrambling: false) {
                     Text("Language Selector")
                 }
             }
