@@ -44,47 +44,6 @@ struct SettingsView: View {
                         PlaybackSettingsView(
                         )
                     }
-//                    SettingsSection(titleKey: "settings.sections.playback") {
-//                        SettingItemView(
-//                                titleKey: "settings.playback.quality",
-//                                descriptionKey: "settings.playback.qualityDesc",
-//                                isScrambling: false
-//                        ) {
-//                            Text("音质控制占位")
-//                        }
-//                        SettingItemView(
-//                                titleKey: "settings.playback.playbackRate",
-//                                descriptionKey: "settings.playback.playbackRateDesc",
-//                                isScrambling: false
-//                        ) {
-//                            Text("播放速率控制占位")
-//                        }
-//                        SettingItemView(
-//                                titleKey: "settings.playback.autoPlay",
-//                                descriptionKey: "settings.playback.autoPlayDesc",
-//                                isScrambling: false
-//                        ) {
-//                            Toggle(isOn: .constant(true)) {
-//                                Text("自动播放占位")
-//                            }
-//                        }
-//                        SettingItemView(
-//                                titleKey: "settings.playback.cache",
-//                                descriptionKey: "settings.playback.cacheDesc",
-//                                isScrambling: false
-//                        ) {
-//                            Text("缓存设置占位")
-//                        }
-//                        SettingItemView(
-//                                titleKey: "settings.playback.lyrics",
-//                                descriptionKey: "settings.playback.lyricsDesc",
-//                                isScrambling: false
-//                        ) {
-//                            Toggle(isOn: .constant(true)) {
-//                                Text("桌面歌词占位")
-//                            }
-//                        }
-//                    }
 
                     // MARK: - 应用设置 (Application Settings) - Electron Only
                     SettingsSection(titleKey: "settings.sections.application") {
