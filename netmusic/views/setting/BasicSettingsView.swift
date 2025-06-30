@@ -26,9 +26,9 @@ struct BasicSettingsView: View {
     @EnvironmentObject var localizationManager: LocalizationManager
 
     @State private var showAnimationSpeedPicker: Bool = false
-    @Binding var triggerThemeAnimation: Bool // 调整顺序：先放这个
-    @Binding var selectedTheme: ColorScheme  // 然后这个
-    @Binding var animationSpeed: AnimationSpeed // 最后这个
+    @Binding var triggerThemeAnimation: Bool
+    @Binding var selectedTheme: ColorScheme
+    @Binding var animationSpeed: AnimationSpeed
 
     @State private var triggerLanguageAnimation: Bool = false
     @State private var targetLanguageCode: String = "zh-Hans"

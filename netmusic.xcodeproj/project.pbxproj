@@ -11,6 +11,7 @@
 		5948F49B4361D9683707AE8A /* NELoginPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */; };
 		5948F62E960BB4694F3B14E2 /* NELoginQrKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB41215087CD316E359F /* NELoginQrKey.swift */; };
 		5948FAC90B197DE05CDBDA83 /* NELoginQrChk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */; };
+		5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */; };
 		5948FF5CE8555154D014FD49 /* NELoginQrCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */; };
 		B579CFD82E00D2E800B1F047 /* MusicApi.h in Headers */ = {isa = PBXBuildFile; fileRef = B579CFD72E00D2E800B1F047 /* MusicApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B579CFE32E00D2FE00B1F047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579CFE22E00D2FE00B1F047 /* AppDelegate.swift */; };
@@ -90,6 +91,7 @@
 		5948FB41215087CD316E359F /* NELoginQrKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrKey.swift; sourceTree = "<group>"; };
 		5948FB847A4AB0B0CC4B9531 /* NELogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELogin.swift; sourceTree = "<group>"; };
 		5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrCreate.swift; sourceTree = "<group>"; };
+		5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSettingsView.swift; sourceTree = "<group>"; };
 		B579CFD52E00D2E800B1F047 /* MusicApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B579CFD72E00D2E800B1F047 /* MusicApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicApi.h; sourceTree = "<group>"; };
 		B579CFE02E00D2FE00B1F047 /* MusicApiTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MusicApiTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -338,6 +340,7 @@
 				B596F9182E01F2F200CB2BCB /* SettingItemView.swift */,
 				B596F91A2E01F31E00CB2BCB /* SettingsSection.swift */,
 				B596F91C2E01F35D00CB2BCB /* BasicSettingsView.swift */,
+				5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */,
 			);
 			path = setting;
 			sourceTree = "<group>";
@@ -619,6 +622,7 @@
 				B58FBE9E2E009F1D00A622E4 /* user.swift in Sources */,
 				B596F9222E01F3CF00CB2BCB /* Bundle+Localization.swift in Sources */,
 				B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */,
+				5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
