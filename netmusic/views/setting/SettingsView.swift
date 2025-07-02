@@ -48,8 +48,8 @@ struct SettingsView: View {
                     // MARK: - 应用设置 (Application Settings) - Electron Only
                     SettingsSection(titleKey: "settings.sections.application") {
                         SettingItemView(
-                                titleKey: "settings.application.update",
-                                descriptionKey: "settings.application.updateDesc",
+                                titleKey: "settings.application.updateSettings",
+                                descriptionKey: "settings.application.updateSettingsDesc",
                                 isScrambling: false
                         ) {
                             Text("更新设置占位")

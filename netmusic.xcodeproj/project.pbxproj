@@ -8,11 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		5948F0C3632A4560F01C20D9 /* NELogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB847A4AB0B0CC4B9531 /* NELogin.swift */; };
+		5948F22839E7C5D9853D293E /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF168DC2EB4EC4230113 /* userMainView.swift */; };
 		5948F49B4361D9683707AE8A /* NELoginPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */; };
 		5948F62E960BB4694F3B14E2 /* NELoginQrKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB41215087CD316E359F /* NELoginQrKey.swift */; };
+		5948F69EFA88AB2FA4331223 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */; };
+		5948F6F428B57D38B31947F0 /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF168DC2EB4EC4230113 /* userMainView.swift */; };
+		5948FA0D29F01E2546459D14 /* userThought.md in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC73D4F44EAD928F684D /* userThought.md */; };
 		5948FAC90B197DE05CDBDA83 /* NELoginQrChk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */; };
+		5948FC85E357A6DC3DD403D5 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FBD7403E295E403205B1 /* userQrShow.swift */; };
+		5948FDC8A59AAAFBF5F454C4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */; };
+		5948FEA4D275722A81983E49 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FBD7403E295E403205B1 /* userQrShow.swift */; };
 		5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */; };
 		5948FF5CE8555154D014FD49 /* NELoginQrCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */; };
+		5948FFA5A7AE587950030173 /* userThought.md in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC73D4F44EAD928F684D /* userThought.md */; };
 		B579CFD82E00D2E800B1F047 /* MusicApi.h in Headers */ = {isa = PBXBuildFile; fileRef = B579CFD72E00D2E800B1F047 /* MusicApi.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B579CFE32E00D2FE00B1F047 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579CFE22E00D2FE00B1F047 /* AppDelegate.swift */; };
 		B579CFE52E00D2FE00B1F047 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B579CFE42E00D2FE00B1F047 /* SceneDelegate.swift */; };
@@ -90,7 +98,11 @@
 		5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrChk.swift; sourceTree = "<group>"; };
 		5948FB41215087CD316E359F /* NELoginQrKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrKey.swift; sourceTree = "<group>"; };
 		5948FB847A4AB0B0CC4B9531 /* NELogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELogin.swift; sourceTree = "<group>"; };
+		5948FBD7403E295E403205B1 /* userQrShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userQrShow.swift; sourceTree = "<group>"; };
+		5948FC73D4F44EAD928F684D /* userThought.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = userThought.md; sourceTree = "<group>"; };
 		5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrCreate.swift; sourceTree = "<group>"; };
+		5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
+		5948FF168DC2EB4EC4230113 /* userMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userMainView.swift; sourceTree = "<group>"; };
 		5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSettingsView.swift; sourceTree = "<group>"; };
 		B579CFD52E00D2E800B1F047 /* MusicApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MusicApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B579CFD72E00D2E800B1F047 /* MusicApi.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MusicApi.h; sourceTree = "<group>"; };
@@ -357,6 +369,10 @@
 			isa = PBXGroup;
 			children = (
 				B58FBE8E2E009F1D00A622E4 /* user.swift */,
+				5948FBD7403E295E403205B1 /* userQrShow.swift */,
+				5948FC73D4F44EAD928F684D /* userThought.md */,
+				5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */,
+				5948FF168DC2EB4EC4230113 /* userMainView.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -583,6 +599,10 @@
 				5948FAC90B197DE05CDBDA83 /* NELoginQrChk.swift in Sources */,
 				5948FF5CE8555154D014FD49 /* NELoginQrCreate.swift in Sources */,
 				5948F62E960BB4694F3B14E2 /* NELoginQrKey.swift in Sources */,
+				5948FEA4D275722A81983E49 /* userQrShow.swift in Sources */,
+				5948FA0D29F01E2546459D14 /* userThought.md in Sources */,
+				5948FDC8A59AAAFBF5F454C4 /* AuthenticationManager.swift in Sources */,
+				5948F6F428B57D38B31947F0 /* userMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,6 +643,10 @@
 				B596F9222E01F3CF00CB2BCB /* Bundle+Localization.swift in Sources */,
 				B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */,
 				5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */,
+				5948FC85E357A6DC3DD403D5 /* userQrShow.swift in Sources */,
+				5948FFA5A7AE587950030173 /* userThought.md in Sources */,
+				5948F69EFA88AB2FA4331223 /* AuthenticationManager.swift in Sources */,
+				5948F22839E7C5D9853D293E /* userMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
