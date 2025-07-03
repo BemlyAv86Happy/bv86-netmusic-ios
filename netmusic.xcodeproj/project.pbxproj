@@ -10,13 +10,16 @@
 		5948F0C3632A4560F01C20D9 /* NELogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB847A4AB0B0CC4B9531 /* NELogin.swift */; };
 		5948F22839E7C5D9853D293E /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF168DC2EB4EC4230113 /* userMainView.swift */; };
 		5948F49B4361D9683707AE8A /* NELoginPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */; };
+		5948F4EC6D37836D2B1BADFE /* userAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F5C035A8376E65EACFA5 /* userAPI.swift */; };
 		5948F62E960BB4694F3B14E2 /* NELoginQrKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB41215087CD316E359F /* NELoginQrKey.swift */; };
 		5948F69EFA88AB2FA4331223 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */; };
 		5948F6F428B57D38B31947F0 /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF168DC2EB4EC4230113 /* userMainView.swift */; };
+		5948F8E165C9261B58F638F4 /* apiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC84F8D87DC8BFB9B149 /* apiModels.swift */; };
+		5948F9C5A24C09163A46C2A9 /* userCellPhoneShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FA4110E2528ABF8FA41C /* userCellPhoneShow.swift */; };
 		5948FA0D29F01E2546459D14 /* userThought.md in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC73D4F44EAD928F684D /* userThought.md */; };
 		5948FAC90B197DE05CDBDA83 /* NELoginQrChk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */; };
+		5948FB502567D8DBFEBA4CAD /* loginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F79C45FAE70E0A25B7EC /* loginAPI.swift */; };
 		5948FC85E357A6DC3DD403D5 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FBD7403E295E403205B1 /* userQrShow.swift */; };
-		5948FDC8A59AAAFBF5F454C4 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */; };
 		5948FEA4D275722A81983E49 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FBD7403E295E403205B1 /* userQrShow.swift */; };
 		5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */; };
 		5948FF5CE8555154D014FD49 /* NELoginQrCreate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */; };
@@ -95,11 +98,15 @@
 
 /* Begin PBXFileReference section */
 		5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginPhone.swift; sourceTree = "<group>"; };
+		5948F5C035A8376E65EACFA5 /* userAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userAPI.swift; sourceTree = "<group>"; };
 		5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrChk.swift; sourceTree = "<group>"; };
+		5948F79C45FAE70E0A25B7EC /* loginAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = loginAPI.swift; sourceTree = "<group>"; };
+		5948FA4110E2528ABF8FA41C /* userCellPhoneShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userCellPhoneShow.swift; sourceTree = "<group>"; };
 		5948FB41215087CD316E359F /* NELoginQrKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrKey.swift; sourceTree = "<group>"; };
 		5948FB847A4AB0B0CC4B9531 /* NELogin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELogin.swift; sourceTree = "<group>"; };
 		5948FBD7403E295E403205B1 /* userQrShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userQrShow.swift; sourceTree = "<group>"; };
 		5948FC73D4F44EAD928F684D /* userThought.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = userThought.md; sourceTree = "<group>"; };
+		5948FC84F8D87DC8BFB9B149 /* apiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiModels.swift; sourceTree = "<group>"; };
 		5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrCreate.swift; sourceTree = "<group>"; };
 		5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5948FF168DC2EB4EC4230113 /* userMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userMainView.swift; sourceTree = "<group>"; };
@@ -189,6 +196,14 @@
 			path = NeteaseAndroid;
 			sourceTree = "<group>";
 		};
+		5948FA53F811BD173A0F7DF8 /* mockAPI */ = {
+			isa = PBXGroup;
+			children = (
+				5948FF3107063D8D63E29342 /* user */,
+			);
+			path = mockAPI;
+			sourceTree = "<group>";
+		};
 		5948FAF3EDDFCBE9517436C6 /* Apple */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +235,16 @@
 				5948FB41215087CD316E359F /* NELoginQrKey.swift */,
 			);
 			path = Netease;
+			sourceTree = "<group>";
+		};
+		5948FF3107063D8D63E29342 /* user */ = {
+			isa = PBXGroup;
+			children = (
+				5948FC84F8D87DC8BFB9B149 /* apiModels.swift */,
+				5948F79C45FAE70E0A25B7EC /* loginAPI.swift */,
+				5948F5C035A8376E65EACFA5 /* userAPI.swift */,
+			);
+			path = user;
 			sourceTree = "<group>";
 		};
 		5948FF8831A9242E19A40CDA /* NeteaseWin */ = {
@@ -297,13 +322,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		B58FBE7F2E009F1D00A622E4 /* api */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = api;
-			sourceTree = "<group>";
-		};
 		B58FBE812E009F1D00A622E4 /* router */ = {
 			isa = PBXGroup;
 			children = (
@@ -373,6 +391,7 @@
 				5948FC73D4F44EAD928F684D /* userThought.md */,
 				5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */,
 				5948FF168DC2EB4EC4230113 /* userMainView.swift */,
+				5948FA4110E2528ABF8FA41C /* userCellPhoneShow.swift */,
 			);
 			path = user;
 			sourceTree = "<group>";
@@ -395,12 +414,12 @@
 			isa = PBXGroup;
 			children = (
 				B596F91E2E01F38F00CB2BCB /* i18n */,
-				B58FBE7F2E009F1D00A622E4 /* api */,
 				B58FBE812E009F1D00A622E4 /* router */,
 				B58FBE902E009F1D00A622E4 /* views */,
 				B58FBE912E009F1D00A622E4 /* Assets.xcassets */,
 				B58FBE922E009F1D00A622E4 /* Info.plist */,
 				B58FBE932E009F1D00A622E4 /* netmusicApp.swift */,
+				5948FA53F811BD173A0F7DF8 /* mockAPI */,
 			);
 			path = netmusic;
 			sourceTree = "<group>";
@@ -601,7 +620,6 @@
 				5948F62E960BB4694F3B14E2 /* NELoginQrKey.swift in Sources */,
 				5948FEA4D275722A81983E49 /* userQrShow.swift in Sources */,
 				5948FA0D29F01E2546459D14 /* userThought.md in Sources */,
-				5948FDC8A59AAAFBF5F454C4 /* AuthenticationManager.swift in Sources */,
 				5948F6F428B57D38B31947F0 /* userMainView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -647,6 +665,10 @@
 				5948FFA5A7AE587950030173 /* userThought.md in Sources */,
 				5948F69EFA88AB2FA4331223 /* AuthenticationManager.swift in Sources */,
 				5948F22839E7C5D9853D293E /* userMainView.swift in Sources */,
+				5948F8E165C9261B58F638F4 /* apiModels.swift in Sources */,
+				5948FB502567D8DBFEBA4CAD /* loginAPI.swift in Sources */,
+				5948F4EC6D37836D2B1BADFE /* userAPI.swift in Sources */,
+				5948F9C5A24C09163A46C2A9 /* userCellPhoneShow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

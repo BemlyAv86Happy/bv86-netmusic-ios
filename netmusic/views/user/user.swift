@@ -9,21 +9,21 @@ import SwiftUI
 
 struct UserView: View {
     // 使用 @StateObject 创建并持有 AuthenticationManager 实例
-    // @StateObject 确保该对象在 UserView 的整个生命周期中只被创建一次
-    @StateObject var authManager = AuthenticationManager()
+    // 默认使用 MockLoginService 进行开发和测试
+    @StateObject var authManager = AuthenticationManager(loginService: MockLoginService())
+
+    // 如果要切换到真实的后端服务，可以将注释掉的 RealLoginService() 替换
+    // @StateObject var authManager = AuthenticationManager(loginService: RealLoginService())
 
     var body: some View {
-        NavigationView { // 确保子视图可以利用导航功能
-            Group { // 使用 Group 根据条件切换视图
+        NavigationView {
+            Group {
                 if authManager.isLoggedIn {
-                    // 用户已登录，渲染主界面
-                    userMainView()
+                    userMainView() // 你的用户主视图
                 } else {
-                    // 用户尚未登录，显示二维码登录界面
-                    UserQRShowView()
+                    userQRShowView() // 你的二维码登录视图
                 }
             }
-            // 将 authManager 注入到子视图的环境中，以便它们可以通过 @EnvironmentObject 访问
             .environmentObject(authManager)
         }
     }
