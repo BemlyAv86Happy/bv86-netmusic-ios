@@ -4,6 +4,8 @@
 //
 //  Created by 0xav10086 on 2025/6/16.
 //
+//  该文件主要用于切换视图，而不作为显示视图
+//
 
 import SwiftUI
 
@@ -17,7 +19,7 @@ struct UserView: View {
         NavigationView { // 确保最外层有且只有一个 NavigationView
             Group {
                 if authManager.isLoggedIn {
-                    userMainView() // 假设你有一个主界面视图
+                    userMainView()
                 } else {
                     // 根据 showQRLogin 的状态切换视图
                     if showQRLogin {
@@ -33,7 +35,7 @@ struct UserView: View {
 //            .navigationTitle("登录") // Primary title for the entire login flow
 //            .navigationBarTitleDisplayMode(.inline) // Optional: Adjust title display
         }
-//        .navigationViewStyle(.stack) // 确保在 iPad 等设备上也正常显示
+        .navigationViewStyle(.stack) // 确保在 iPad 等设备上也正常显示
     }
 }
 

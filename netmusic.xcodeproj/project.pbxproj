@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5948F093668E89953B101ADA /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F1E9900FF92F87437802 /* AuthenticationManager.swift */; };
 		5948F0C3632A4560F01C20D9 /* NELogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB847A4AB0B0CC4B9531 /* NELogin.swift */; };
 		5948F139AC2B7BE3CA48DCE3 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE9BD0F024B3495CA442 /* userQrShow.swift */; };
 		5948F22839E7C5D9853D293E /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF168DC2EB4EC4230113 /* userMainView.swift */; };
@@ -14,7 +15,6 @@
 		5948F49B4361D9683707AE8A /* NELoginPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */; };
 		5948F4EC6D37836D2B1BADFE /* userAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F5C035A8376E65EACFA5 /* userAPI.swift */; };
 		5948F62E960BB4694F3B14E2 /* NELoginQrKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB41215087CD316E359F /* NELoginQrKey.swift */; };
-		5948F69EFA88AB2FA4331223 /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */; };
 		5948F6F428B57D38B31947F0 /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF168DC2EB4EC4230113 /* userMainView.swift */; };
 		5948F81AE9F9F5BE7E767704 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE9BD0F024B3495CA442 /* userQrShow.swift */; };
 		5948F8E165C9261B58F638F4 /* apiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC84F8D87DC8BFB9B149 /* apiModels.swift */; };
@@ -97,6 +97,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5948F1E9900FF92F87437802 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginPhone.swift; sourceTree = "<group>"; };
 		5948F5C035A8376E65EACFA5 /* userAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userAPI.swift; sourceTree = "<group>"; };
 		5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrChk.swift; sourceTree = "<group>"; };
@@ -107,7 +108,6 @@
 		5948FC73D4F44EAD928F684D /* userThought.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = userThought.md; sourceTree = "<group>"; };
 		5948FC84F8D87DC8BFB9B149 /* apiModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = apiModels.swift; sourceTree = "<group>"; };
 		5948FD892B95EDFAB55589D8 /* NELoginQrCreate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginQrCreate.swift; sourceTree = "<group>"; };
-		5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5948FE9BD0F024B3495CA442 /* userQrShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userQrShow.swift; sourceTree = "<group>"; };
 		5948FF168DC2EB4EC4230113 /* userMainView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userMainView.swift; sourceTree = "<group>"; };
 		5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaybackSettingsView.swift; sourceTree = "<group>"; };
@@ -242,6 +242,7 @@
 			children = (
 				5948FC596535618AAB70B9BA /* userCellPhoneShow.swift */,
 				5948FE9BD0F024B3495CA442 /* userQrShow.swift */,
+				5948F1E9900FF92F87437802 /* AuthenticationManager.swift */,
 			);
 			path = login;
 			sourceTree = "<group>";
@@ -397,7 +398,6 @@
 			children = (
 				B58FBE8E2E009F1D00A622E4 /* user.swift */,
 				5948FC73D4F44EAD928F684D /* userThought.md */,
-				5948FE3FCF74F624580CFF50 /* AuthenticationManager.swift */,
 				5948FF168DC2EB4EC4230113 /* userMainView.swift */,
 				5948FE1AF4EB38E4E485FFE6 /* login */,
 			);
@@ -670,13 +670,13 @@
 				B58FBE9F2E009F1D00A622E4 /* netmusicApp.swift in Sources */,
 				5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */,
 				5948FFA5A7AE587950030173 /* userThought.md in Sources */,
-				5948F69EFA88AB2FA4331223 /* AuthenticationManager.swift in Sources */,
 				5948F22839E7C5D9853D293E /* userMainView.swift in Sources */,
 				5948F8E165C9261B58F638F4 /* apiModels.swift in Sources */,
 				5948FB502567D8DBFEBA4CAD /* loginAPI.swift in Sources */,
 				5948F4EC6D37836D2B1BADFE /* userAPI.swift in Sources */,
 				5948F45CF98269FAD70863D9 /* userCellPhoneShow.swift in Sources */,
 				5948F81AE9F9F5BE7E767704 /* userQrShow.swift in Sources */,
+				5948F093668E89953B101ADA /* AuthenticationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
