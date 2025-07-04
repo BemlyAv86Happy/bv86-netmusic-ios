@@ -38,6 +38,11 @@ class AuthenticationManager: ObservableObject {
     }
 
     // MARK: - Public Methods
+    func clearErrorMessage() {
+            DispatchQueue.main.async {
+                self.errorLoginMessage = nil
+            }
+    }
 
     // 获取并显示二维码
     func fetchAndDisplayQRCode() {
