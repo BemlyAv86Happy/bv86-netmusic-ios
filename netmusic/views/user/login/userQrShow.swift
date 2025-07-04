@@ -12,20 +12,20 @@ struct userQRShowView: View {
         VStack {
             // 内容标题上移
             Text("扫码登录") // 作为内容标题
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .padding(.bottom, 10) // 调整与二维码的间距
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
+                    .padding(.bottom, 10) // 调整与二维码的间距
 
             if let qrImage = authManager.qrCodeImage {
                 qrImage
-                    .resizable()
-                    .interpolation(.none)
-                    .scaledToFit()
-                    .frame(width: 250, height: 250)
-                    // .padding(.top, 20) // 标题已上移，这里不需要额外padding
+                        .resizable()
+                        .interpolation(.none)
+                        .scaledToFit()
+                        .frame(width: 300, height: 300)
+                // .padding(.top, 20) // 标题已上移，这里不需要额外padding
             } else {
                 Text("正在加载二维码...")
-                    .font(.headline)
+                        .font(.headline)
                 ProgressView()
             }
 
@@ -35,13 +35,13 @@ struct userQRShowView: View {
                     authManager.resetQRCodeAndError()
                 } label: {
                     Text("重试/重新生成二维码")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                        .padding(.horizontal) // 保持水平内边距
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                            .padding(.horizontal) // 保持水平内边距
                 }
 
                 Button {
@@ -49,21 +49,22 @@ struct userQRShowView: View {
                     showQRLogin = false // 切换到手机号登录视图
                 } label: {
                     Text("切换到手机号登录")
-                        .font(.headline) // 统一字体大小
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity)
-                        .padding()
-                        .background(Color.gray) // 保持灰色背景
-                        .cornerRadius(10)
-                        .padding(.horizontal)
+                            .font(.headline) // 统一字体大小
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity)
+                            .padding()
+                            .background(Color.gray) // 保持灰色背景
+                            .cornerRadius(10)
+                            .padding(.horizontal)
                 }
             }
-            .padding(.top, 10) // 调整按钮组与二维码的间距
+                    .padding(.top, 10) // 调整按钮组与二维码的间距
 
             Spacer() // 将内容向上推
 
             // 错误信息弹窗保持不变
         }
+        .padding(.top, -80)
 //        .navigationTitle("登录") // 导航栏标题，保持一级标题
 //        .navigationBarTitleDisplayMode(.inline) // 确保标题显示在中间
         .toolbar {

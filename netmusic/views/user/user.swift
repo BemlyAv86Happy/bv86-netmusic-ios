@@ -31,9 +31,9 @@ struct UserView: View {
             // .navigationBarHidden(true) // 如果你希望整个登录流程都没有导航栏，可以在这里隐藏
             // 否则，让子视图通过 .navigationTitle 和 .toolbar 来配置导航栏
 //            .navigationTitle("登录") // Primary title for the entire login flow
-            .navigationBarTitleDisplayMode(.inline) // Optional: Adjust title display
+//            .navigationBarTitleDisplayMode(.inline) // Optional: Adjust title display
         }
-        .navigationViewStyle(.stack) // 确保在 iPad 等设备上也正常显示
+//        .navigationViewStyle(.stack) // 确保在 iPad 等设备上也正常显示
     }
 }
 
