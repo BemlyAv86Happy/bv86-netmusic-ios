@@ -11,6 +11,7 @@ import SwiftUI
 
 struct UserView: View {
     @StateObject var authManager = AuthenticationManager(loginService: MockLoginService())
+    @StateObject var localizationManager = LocalizationManager()
 
     // 控制显示哪个登录视图的状态变量
     @State private var showQRLogin: Bool = true // 默认为二维码登录

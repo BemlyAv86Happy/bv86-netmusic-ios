@@ -15,14 +15,13 @@ class AuthenticationManager: ObservableObject {
     @Published var isLoggedIn: Bool = false
     @Published var qrCodeImage: Image?
     @Published var errorLoginMessage: AppError?
-    @Published var userName: String?
-    @Published var userInfo: String?
+    @Published var userName: String? // Keep userName for simple display
+    @Published var currentUserInfo: UserInfoData? // New property to hold full user data
 
     // 依赖注入的属性
     private let loginService: LoginAPIService // 这是一个协议类型
 
     // MARK: - Constants
-    let defaultUserName: String = "蜂群987号"
     let defaultQrCodeURL: String = "https://music.163.com/"
 
     // MARK: - Private Properties
@@ -34,7 +33,8 @@ class AuthenticationManager: ObservableObject {
     // 在实际生产环境中，这里应该传入 RealLoginService
     init(loginService: LoginAPIService = MockLoginService()) { // 默认使用 MockLoginService
         self.loginService = loginService
-        self.userName = defaultUserName
+        // Removed problematic line: self.userName = MockUserService.getUserDetail(userName)
+        // User details should be fetched *after* successful login, not in init.
     }
 
     // MARK: - Public Methods
@@ -83,7 +83,7 @@ class AuthenticationManager: ObservableObject {
         }
     }
 
-    // 开始轮询登录状态
+    // 轮询登录状态
     private func startPollingLoginStatus() {
         guard let qrKey = currentQrKey else {
             DispatchQueue.main.async {
@@ -101,8 +101,7 @@ class AuthenticationManager: ObservableObject {
                     if response.body.code == 803 { // 登录成功
                         DispatchQueue.main.async {
                             self.isLoggedIn = true
-                            self.userName = response.body.data?.userName ?? self.defaultUserName
-                            self.userInfo = response.body.data?.userInfo
+                            self.userName = response.body.data?.userName
                             self.errorLoginMessage = nil
                             self.pollingTask?.cancel()
                             print("登录成功！用户：\(self.userName ?? "")")
@@ -135,54 +134,60 @@ class AuthenticationManager: ObservableObject {
         }
     }
 
-    // 重置二维码和错误信息，重新开始流程
+    // 重置二维码和错误信息
     func resetQRCodeAndError() {
-        pollingTask?.cancel()
+        pollingTask?.cancel() // Cancel any ongoing polling
+        currentQrKey = nil
         qrCodeImage = nil
         errorLoginMessage = nil
-        fetchAndDisplayQRCode()
+        fetchAndDisplayQRCode() // Re-fetch QR code
     }
 
-    // 跳过二维码登录，直接显示主界面
+    // 跳过登录（仅用于开发测试）
     func skipLogin() {
-        pollingTask?.cancel()
         DispatchQueue.main.async {
             self.isLoggedIn = true
-            self.userName = self.defaultUserName
-            self.userInfo = "游客模式"
             self.qrCodeImage = nil
             self.errorLoginMessage = nil
-            print("已跳过二维码登录，进入游客模式。")
+            self.userName = "访客用户" // Simulate a guest user
+            // Set some mock user info for skip login if userMainView needs it
+            self.currentUserInfo = UserInfoData(
+                userName: "蜂群789号",
+                avatarUrl: nil,
+                backgroundUrl: nil,
+                followers: 0,
+                follows: 0,
+                signature: "您已跳过登录。",
+                level: 0            )
+            print("已跳过登录。")
         }
     }
 
-    func loginByCellphone(phone: String, password: String) async {
-        DispatchQueue.main.async {
-            self.errorLoginMessage = nil // 清除之前的错误信息
-        }
-        do {
-            let response = try await loginService.loginByCellphone(phone: phone, password: password)
-
-            if response.body.code == 200 { // 假设 200 表示登录成功
-                DispatchQueue.main.async {
-                    self.isLoggedIn = true
-                    self.userName = response.body.data?.userName ?? self.defaultUserName
-                    self.userInfo = response.body.data?.userInfo
-                    self.errorLoginMessage = nil
-                    print("手机号登录成功！用户：\(self.userName ?? "")")
-                }
-            } else {
-                // 登录失败，显示后端返回的错误信息
-                DispatchQueue.main.async {
-                    self.errorLoginMessage = AppError.backendError(response.body.message ?? "手机号或密码错误。")
-                }
-            }
-        } catch {
-            DispatchQueue.main.async {
-                if let appError = error as? AppError {
-                    self.errorLoginMessage = appError
+    // 手机号登录
+    func loginByCellphone(phone: String, password: String) {
+        Task {
+            do {
+                let response = try await loginService.loginByCellphone(phone: phone, password: password)
+                if response.code == 200 { // 假设成功码是200
+                    await MainActor.run {
+                        self.isLoggedIn = true
+                        self.userName = "手机用户: \(phone)" // Placeholder, get actual name from response if available
+                        self.currentUserInfo = response.body.data // Populate user info from phone login response
+                        self.errorLoginMessage = nil
+                        print("手机号登录成功！")
+                    }
                 } else {
-                    self.errorLoginMessage = AppError.networkError(error.localizedDescription)
+                    DispatchQueue.main.async {
+                        self.errorLoginMessage = AppError.backendError(response.body.message ?? "手机号或密码错误。")
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    if let appError = error as? AppError {
+                        self.errorLoginMessage = appError
+                    } else {
+                        self.errorLoginMessage = AppError.networkError(error.localizedDescription)
+                    }
                 }
             }
         }
@@ -190,26 +195,27 @@ class AuthenticationManager: ObservableObject {
 
     // 用户登出
     func logout() {
+        pollingTask?.cancel() // Cancel any ongoing polling task
         Task { // 登出也应该异步，因为可能调用 API
             do {
                 let success = try await loginService.logout()
                 if success {
-                    DispatchQueue.main.async {
+                    await MainActor.run {
                         self.isLoggedIn = false
                         self.qrCodeImage = nil
                         self.errorLoginMessage = nil
-                        self.userName = self.defaultUserName
-                        self.userInfo = nil
+                        self.userName = nil // Clear user name on logout
+                        self.currentUserInfo = nil // Clear full user info on logout
                         print("用户已登出。")
-                        self.fetchAndDisplayQRCode()
+                        self.fetchAndDisplayQRCode() // Optionally fetch new QR code after logout
                     }
                 } else {
-                     DispatchQueue.main.async {
+                     await MainActor.run {
                         self.errorLoginMessage = AppError.customError("登出失败。")
                      }
                 }
             } catch {
-                 DispatchQueue.main.async {
+                 await MainActor.run {
                     self.errorLoginMessage = AppError.networkError(error.localizedDescription)
                  }
             }

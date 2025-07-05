@@ -15,13 +15,13 @@ struct userCellPhoneShowView: View {
     var body: some View {
         VStack {
             // 内容标题上移
-            Text("手机号登录") // 作为内容标题
+            Text("user.login.Cellphone") // 作为内容标题
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .padding(.bottom, 30) // 调整与输入框的间距
 
             VStack(spacing: 20) {
-                TextField("手机号", text: $phoneNumber)
+                TextField("user.login.phoneNumber", text: $phoneNumber)
                     .keyboardType(.phonePad)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
@@ -31,7 +31,7 @@ struct userCellPhoneShowView: View {
                     .padding(.horizontal)
 
                 HStack { // 使用 HStack 放置密码/验证码输入框和按钮
-                    SecureField("密码或验证码", text: $passwordOrVerificationCode) // 文本修改
+                    SecureField("user.login.passwordOrVerificationCode", text: $passwordOrVerificationCode) // 文本修改
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(10)
@@ -53,7 +53,7 @@ struct userCellPhoneShowView: View {
                             countdown = 60 // 重置倒计时
                         }
                     } label: {
-                        Text(isSendingCode ? "\(countdown)s" : "获取验证码")
+                        Text(isSendingCode ? "\(countdown)s" : "user.login.getVerificationCode")
                             .font(.caption) // 字体小一点
                             .foregroundColor(.white)
                             .padding(.vertical, 10)
@@ -77,7 +77,7 @@ struct userCellPhoneShowView: View {
                         await authManager.loginByCellphone(phone: phoneNumber, password: passwordOrVerificationCode)
                     }
                 } label: {
-                    Text("登录")
+                    Text("user.login.login")
                         .font(.headline)
                         .foregroundColor(.white)
                         .frame(maxWidth: .infinity)
@@ -91,7 +91,7 @@ struct userCellPhoneShowView: View {
                     authManager.clearErrorMessage() // 切换前清除错误信息
                     showQRLogin = true // 切换回二维码登录视图
                 } label: {
-                    Text("返回扫码登录")
+                    Text("user.login.switchScan")
                         .font(.headline) // 统一字体大小
                         .foregroundColor(.white) // 统一白色字体
                         .frame(maxWidth: .infinity)
@@ -113,16 +113,16 @@ struct userCellPhoneShowView: View {
         }
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("跳过登录") {
+                Button("user.login.skipLogin") {
                     authManager.skipLogin()
                 }
             }
         }
         .alert(item: $authManager.errorLoginMessage) { error in
             Alert(
-                title: Text("错误"),
+                title: Text("user.login.error"),
                 message: Text(error.localizedDescription),
-                dismissButton: .default(Text("要不重试吧")) {
+                dismissButton: .default(Text("user.login.tryAgain")) {
                     authManager.clearErrorMessage()
                 }
             )

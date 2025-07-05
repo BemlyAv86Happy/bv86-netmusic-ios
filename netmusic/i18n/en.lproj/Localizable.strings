@@ -86,3 +86,25 @@
 "common.hide" = "Hide";
 "common.confirm" = "Confirm";
 "common.cancel" = "Cancel";
+"user.login.error" = "错误";
+
+"user.login.login" = "Login";
+"user.login.logout" = "Logout";
+"user.login.tryAgain" = "Try Again";
+"user.login.skipLogin" = "Skip Login";
+"user.login.switchScan" = "Switch to Scan Code Login";
+"user.login.returnPhone" = "Switch to Cellphone Login";
+"user.login.scanCode" = "Scan QR Code to Login";
+"user.login.loadQRCode" = "Loading the QRCode";
+"user.login.anewQRCode" = "Reloading the QRCode";
+"user.login.Cellphone" = "Login with Cellphone";
+"user.login.phoneNumber" = "Phone Number";
+"user.login.passwordOrVerificationCode" = "Password Or VerificationCode";
+"user.login.getVerificationCode" = "Get Verification Code";
+"user.profile.followers" = "Followers";
+"user.profile.following" = "Following";
+"user.profile.level" = "Level";
+"user.detail.playlists" = "Playlists";
+"user.detail.noPlaylists" = "No playlists found";
+"user.mainView.loadData" = "Loading user data...";
+"user.playlist.trackCount" = "Track Count";

@@ -86,3 +86,25 @@
 "common.hide" = "隐藏";
 "common.confirm" = "确认";
 "common.cancel" = "取消";
+
+"user.login.error" = "错误";
+"user.login.login" = "登录";
+"user.login.logout" = "登出";
+"user.login.tryAgain" = "再试一次";
+"user.login.skipLogin" = "跳过登录";
+"user.login.switchScan" = "切换到扫码登录";
+"user.login.returnPhone" = "切换到手机登录";
+"user.login.scanCode" = "扫描二维码登录";
+"user.login.loadQRCode" = "正在加载二维码...";
+"user.login.anewQRCode" = "重新加载二维码";
+"user.login.Cellphone" = "使用手机号登录";
+"user.login.phoneNumber" = "手机号";
+"user.login.passwordOrVerificationCode" = "密码或验证码";
+"user.login.getVerificationCode" = "获取验证码";
+"user.profile.followers" = "粉丝";
+"user.profile.following" = "关注";
+"user.profile.level" = "等级";
+"user.detail.playlists" = "歌单";
+"user.detail.noPlaylists" = "暂无歌单";
+"user.mainView.loadData" = "正在加载数据...";
+"user.playlist.trackCount" = "共 {0} 首";

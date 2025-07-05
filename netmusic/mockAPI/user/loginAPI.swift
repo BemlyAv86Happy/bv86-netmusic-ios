@@ -6,7 +6,6 @@
 // 位于 mockAPI/user/
 
 import Foundation
-// 导入 apiModels.swift 中的数据模型
 
 // MARK: - Login API Protocol
 protocol LoginAPIService {
@@ -53,7 +52,7 @@ struct MockLoginService: LoginAPIService {
                 body: .init(
                     code: 803, // 模拟成功登录的 code
                     message: "登录成功！",
-                    data: .init(userName: "Mock User", userInfo: "Mock VIP User")
+                    data: nil
                 )
             )
         } else if Int.random(in: 0...10) > 5 { // 约 20% 几率模拟二维码过期
@@ -89,7 +88,7 @@ struct MockLoginService: LoginAPIService {
                 body: .init(
                     code: 200, // 模拟成功
                     message: "手机号登录成功！",
-                    data: .init(userName: "Phone User", userInfo: "普通用户")
+                    data: nil
                 )
             )
         } else {

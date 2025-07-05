@@ -7,24 +7,24 @@ import SwiftUI
 struct userQRShowView: View {
     @EnvironmentObject var authManager: AuthenticationManager
     @Binding var showQRLogin: Bool
+    @EnvironmentObject var localizationManager: LocalizationManager
 
     var body: some View {
         VStack {
             // 内容标题上移
-            Text("扫码登录") // 作为内容标题
+            Text("user.login.scanCode") // 作为内容标题
                     .font(.largeTitle)
                     .fontWeight(.bold)
                     .padding(.bottom, 10) // 调整与二维码的间距
 
             if let qrImage = authManager.qrCodeImage {
                 qrImage
-                        .resizable()
-                        .interpolation(.none)
-                        .scaledToFit()
-                        .frame(width: 300, height: 300)
-                // .padding(.top, 20) // 标题已上移，这里不需要额外padding
+                    .resizable()
+                    .interpolation(.none)
+                    .scaledToFit()
+                    .frame(width: 300, height: 300)
             } else {
-                Text("正在加载二维码...")
+                Text("user.login.loadQRCode")
                         .font(.headline)
                 ProgressView()
             }
@@ -34,7 +34,7 @@ struct userQRShowView: View {
                 Button {
                     authManager.resetQRCodeAndError()
                 } label: {
-                    Text("重试/重新生成二维码")
+                    Text("user.login.anewQRCode")
                             .font(.headline)
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -48,7 +48,7 @@ struct userQRShowView: View {
                     authManager.clearErrorMessage() // 切换前清除错误信息
                     showQRLogin = false // 切换到手机号登录视图
                 } label: {
-                    Text("切换到手机号登录")
+                    Text("user.login.returnPhone")
                             .font(.headline) // 统一字体大小
                             .foregroundColor(.white)
                             .frame(maxWidth: .infinity)
@@ -69,7 +69,7 @@ struct userQRShowView: View {
 //        .navigationBarTitleDisplayMode(.inline) // 确保标题显示在中间
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
-                Button("跳过登录") {
+                Button("user.login.skipLogin") {
                     authManager.skipLogin()
                 }
             }
@@ -81,9 +81,9 @@ struct userQRShowView: View {
         }
         .alert(item: $authManager.errorLoginMessage) { error in
             Alert(
-                title: Text("错误"),
+                title: Text("user.login.error"),
                 message: Text(error.localizedDescription),
-                dismissButton: .default(Text("要不重试吧")) {
+                dismissButton: .default(Text("user.login.tryAgain")) {
                     authManager.clearErrorMessage()
                 }
             )

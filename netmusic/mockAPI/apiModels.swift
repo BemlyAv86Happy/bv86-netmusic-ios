@@ -39,30 +39,53 @@ struct PollingQrCodeLoginBody: Decodable {
     let data: UserInfoData? // 登录成功时的用户信息
 }
 
-struct UserInfoData: Decodable {
-    let userName: String // 用户的名字
-    let userInfo: String // 用户的其他信息
-    // 根据你实际的用户信息结构添加更多字段
+// UserInfoData now includes all user-related details
+struct UserInfoData: Identifiable, Codable {
+    let id = UUID() // For Identifiable conformance, not from API
+    var userName: String // 用户的名字
+    var avatarUrl: URL?
+    var backgroundUrl: URL?
+    var followers: Int // Followers
+    var follows: Int // Following
+    var signature: String?
+    var level: Int // 用户等级
+
+    // Added to align with previous UserProfile and UserDetail properties
+    // If these are not strictly part of 'UserInfoData' in your backend,
+    // you might need to reconsider your model structure or add them
+    // as optional properties if they can sometimes be missing.
+    // For now, I'm adding them back to keep the `isArtist` logic compatible
+    // with the original design that you had from `UserProfile`.
+    // If you explicitly do NOT want these, you would remove them.
+
+    // Add a convenience computed property for nickname if userName is the source
+    var nickname: String {
+        return userName
+    }
 }
 
-// MARK: - Custom Error Type
 
-enum AppError: Error, Identifiable {
+// PlaylistItem remains the same
+struct PlaylistItem: Identifiable, Codable {
+    let id: Int // Assuming ID from API
+    var name: String
+    var coverImgUrl: URL?
+    var playCount: Int
+    var trackCount: Int
+}
+
+// MARK: - String Extensions for QR Code
+enum AppError: LocalizedError, Identifiable {
     case networkError(String)
     case decodingError(String)
-    case backendError(String) // 后端返回的业务逻辑错误
+    case backendError(String)
     case customError(String)
 
     var id: String {
-        switch self {
-        case .networkError(let message): return "Network Error: \(message)"
-        case .decodingError(let message): return "Decoding Error: \(message)"
-        case .backendError(let message): return "Backend Error: \(message)"
-        case .customError(let message): return "Error: \(message)"
-        }
+        self.localizedDescription
     }
 
-    var localizedDescription: String {
+    var errorDescription: String? {
         switch self {
         case .networkError(let message): return "网络错误: \(message)"
         case .decodingError(let message): return "数据解析错误: \(message)"
@@ -71,8 +94,6 @@ enum AppError: Error, Identifiable {
         }
     }
 }
-
-// MARK: - String Extensions for QR Code
 
 extension String {
     // 将 Base64 字符串转换为 SwiftUI Image
@@ -102,7 +123,7 @@ extension String {
             let transformedImage = outputImage.transformed(by: CGAffineTransform(scaleX: scaleX, y: scaleY))
 
             if let cgImage = context.createCGImage(transformedImage, from: transformedImage.extent) {
-                return Image(uiImage: UIImage(cgImage: cgImage))
+                return Image(cgImage, scale: 1.0, label: Text("QR Code"))
             }
         }
         return nil
