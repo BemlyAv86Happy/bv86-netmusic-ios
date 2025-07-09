@@ -14,7 +14,12 @@ struct userMainView: View {
     @State private var playList: [PlaylistItem] = []
     @State private var loading: Bool = true
     @State private var errorMessage: String? = nil
-
+//    @State private var scrollOffset: CGFloat = 0 // To track scroll position
+//
+//    // Initial and minimum heights for the collapsing header
+//    private let initialUserInfoHeight: CGFloat = 200 // Original height of user info background
+//    private let minCollapsedHeaderHeight: CGFloat = 60 // Height of collapsed header (avatar + name)
+//    private let playlistTitleHeight: CGFloat = 60 // Estimated height of "Playlists" title with its padding
     // Instantiate your mock API service
     private let userService: UserAPIService = MockUserService()
 
@@ -38,312 +43,257 @@ struct userMainView: View {
         return formatter.string(from: NSNumber(value: number)) ?? "\(number)"
     }
 
+    // MARK: - Helper Views
+    // Calculate the total initial height of the sticky header area (user info + playlists title)
+//    private func calculateTotalInitialHeaderHeight() -> CGFloat {
+//        // The user info section has an initial background height of 200.
+//        // The playlist title has its own estimated height with padding.
+//        return initialUserInfoHeight + playlistTitleHeight
+//    }
+    private func userInfoStatItem(value: String, label: String) -> some View {
+        VStack {
+            Text(value)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.8))
+        }
+    }
+
     var body: some View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: true) {
                 VStack(alignment: .leading, spacing: 16) {
                     if loading {
-                        ProgressView(t("user.mainView.loadData")) // Localized loading message
-                            .frame(maxWidth: .infinity, alignment: .center)
-                            .padding()
+                        ProgressView(t("user.mainView.loadData"))
+                            .frame(maxWidth: .infinity, maxHeight: .infinity)
                     } else if let userDetail = userDetail {
-                        // MARK: - User Info Section (Top 1/4)
-                        userInfoSection(userDetail: userDetail)
-                            .padding(.bottom, 8)
+                        CollapsingUserInfoHeader(userDetail: userDetail, getImgUrl: getImgUrl, t: t, formatNumber: formatNumber) // Pass functions
+                            .frame(height: 200) // Fixed height for the header
+                            .padding(.bottom)
 
-                        // MARK: - Playlist List Section (Remaining 3/4)
-                        VStack(alignment: .leading) {
-                            Text(t("user.detail.playlists"))
-                                .font(.title2)
-                                .fontWeight(.bold)
-                                .padding(.horizontal)
-
-                            if playList.isEmpty {
-                                Text(t("user.detail.noPlaylists"))
-                                    .foregroundColor(.gray)
-                                    .padding()
-                                    .frame(maxWidth: .infinity, alignment: .center)
-                            } else {
-                                playlistListView(playList: playList) // Changed to list view
+                        if !playList.isEmpty {
+                            VStack(alignment: .leading) {
+                                Text(t("user.mainView.myPlaylists"))
+                                    .font(.title2)
+                                    .fontWeight(.bold)
                                     .padding(.horizontal)
+                                    .padding(.top, 10)
+
+                                LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], spacing: 15) {
+                                    ForEach(playList) { playlist in
+                                        PlaylistItemView(playlist: playlist, getImgUrl: getImgUrl)
+                                    }
+                                }
+                                .padding(.horizontal)
+                                .padding(.bottom, 20)
                             }
+                        } else {
+                            Text(t("user.mainView.noPlaylists"))
+                                .foregroundColor(.gray)
+                                .padding()
                         }
-                    } else if errorMessage != nil {
-                        Text(errorMessage ?? t("user.message.loadFailed"))
+                    } else if let errorMessage = errorMessage {
+                        Text(t("user.mainView.errorLoading") + ": \(errorMessage)")
                             .foregroundColor(.red)
                             .padding()
-                            .frame(maxWidth: .infinity, alignment: .center)
-                    }
-
-                    Spacer()
-                        .frame(height: 80)
-                }
-                .padding(.trailing, 16)
-                .padding(.bottom, 16)
-            }
-            .navigationTitle("")
-            .navigationBarHidden(true)
-            .onAppear(perform: loadUserData)
-            .alert("Error", isPresented: Binding(get: { errorMessage != nil }, set: { if !$0 { errorMessage = nil } })) {
-                Button("OK") { errorMessage = nil }
-            } message: {
-                Text(errorMessage ?? "An unknown error occurred.")
-            }
-        }
-    }
-
-    // MARK: - Subviews
-
-    @ViewBuilder
-    private func userInfoSection(userDetail: UserInfoData) -> some View {
-        VStack(alignment: .leading) {
-            ZStack(alignment: .bottomLeading) {
-                if let backgroundUrl = getImgUrl(userDetail.backgroundUrl) {
-                    AsyncImage(url: backgroundUrl) { phase in
-                        switch phase {
-                        case .empty:
-                            ProgressView()
-                                .frame(maxWidth: .infinity, maxHeight: 200)
-                        case .success(let image):
-                            image
-                                .resizable()
-                                .scaledToFill()
-                                .frame(height: 100)
-                                .clipped()
-                        case .failure:
-                            Color.gray
-                                .frame(height: 100)
-                        @unknown default:
-                            EmptyView()
-                        }
-                    }
-                } else {
-                    Color.gray
-                        .frame(height: 100)
-                }
-
-                Color.black.opacity(0.4)
-                    .frame(height: 100)
-
-                HStack(alignment: .center) {
-                    if let avatarUrl = getImgUrl(userDetail.avatarUrl, "80y80") {
-                        AsyncImage(url: avatarUrl) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .frame(width: 80, height: 80)
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFill()
-                                    .frame(width: 80, height: 80)
-                                    .clipShape(Circle())
-                            case .failure:
-                                Image(systemName: "person.circle.fill")
-                                    .resizable()
-                                    .frame(width: 80, height: 80)
-                                    .clipShape(Circle())
-                            @unknown default:
-                                EmptyView()
-                            }
-                        }
-                    } else {
-                        Image(systemName: "person.circle.fill")
-                            .resizable()
-                            .frame(width: 80, height: 80)
-                            .clipShape(Circle())
-                    }
-
-                    VStack(alignment: .leading, spacing: 4) {
-                        HStack(alignment: .center) {
-                            Text(userDetail.userName)
-                                .font(.title)
-                                .fontWeight(.bold)
-
-                            // Removed isArtist check and related UI elements here
-                        }
-
-                        HStack(spacing: 24) {
-                            userInfoStatItem(label: "\(formatNumber(userDetail.followers))", text: t("user.profile.followers")) {
-                                showFollowerList()
-                            }
-                            userInfoStatItem(label: "\(formatNumber(userDetail.follows))", text: t("user.profile.following")) {
-                                showFollowList()
-                            }
-                            userInfoStatItem(label: "\(userDetail.level)", text: t("user.profile.level"))
-                        }
-                        .padding(.top, 4)
-
-                        Text(userDetail.signature ?? t("user.detail.noSignature"))
-                            .font(.footnote)
-                            .foregroundColor(.white.opacity(0.8))
-                            .lineLimit(2)
-                            .padding(.top, 4)
-                    }
-                    .foregroundColor(.white)
-                    .padding(.leading, 16)
-                }
-                .padding(24)
-            }
-            .frame(height: 100) // Fixed height for user info section
-            .cornerRadius(12)
-            .clipped()
-        }
-        .padding(.horizontal)
-    }
-
-    @ViewBuilder
-    private func userInfoStatItem(label: String, text: String, action: (() -> Void)? = nil) -> some View {
-        Button(action: { action?() }) {
-            VStack {
-                Text(label)
-                    .font(.headline)
-                    .fontWeight(.bold)
-                Text(text)
-                    .font(.caption)
-            }
-            .padding(.horizontal, 8)
-            .padding(.vertical, 4)
-            .background(
-                RoundedRectangle(cornerRadius: 8)
-                    .fill(Color.black.opacity(0.0))
-            )
-        }
-        .buttonStyle(PlainButtonStyle())
-        .hoverEffect(.highlight)
-        .onHover { isHovering in }
-        .animation(.easeOut(duration: 0.2), value: 0)
-    }
-
-    // New Playlist List View (single column)
-    @ViewBuilder
-    private func playlistListView(playList: [PlaylistItem]) -> some View {
-        LazyVStack(spacing: 12) { // Changed to LazyVStack for single column
-            ForEach(playList) { item in
-                playlistItemView(item: item)
-                    .onTapGesture {
-                        openPlaylist(item: item)
-                    }
-            }
-        }
-        .padding(.vertical, 8)
-    }
-
-    // Modified Playlist Item View for list row
-    @ViewBuilder
-    private func playlistItemView(item: PlaylistItem) -> some View {
-        HStack(alignment: .center, spacing: 12) {
-            // Cover Image
-            if let coverUrl = getImgUrl(item.coverImgUrl, "60y60") { // Smaller size for list
-                AsyncImage(url: coverUrl) { phase in
-                    switch phase {
-                    case .empty:
-                        ProgressView()
-                            .frame(width: 60, height: 60)
-                    case .success(let image):
-                        image
-                            .resizable()
-                            .scaledToFill()
-                            .frame(width: 60, height: 60)
-                            .clipShape(RoundedRectangle(cornerRadius: 8)) // Slightly smaller radius
-                    case .failure:
-                        Color.gray
-                            .frame(width: 60, height: 60)
-                            .clipShape(RoundedRectangle(cornerRadius: 8))
-                    @unknown default:
-                        EmptyView()
                     }
                 }
-            } else {
-                Color.gray
-                    .frame(width: 60, height: 60)
-                    .clipShape(RoundedRectangle(cornerRadius: 8))
+                .onAppear(perform: loadUserData)
             }
-
-            // Playlist Info (Name and Track Count)
-            VStack(alignment: .leading, spacing: 4) {
-                Text(item.name)
-                    .font(.subheadline)
-                    .fontWeight(.medium)
-                    .foregroundColor(Color(uiColor: .label))
-                    .lineLimit(1) // Limit to one line for list items
-
-                Text(t("user.playlist.trackCount", args: ["count": item.trackCount]))
-                    .font(.caption2)
-                    .foregroundColor(Color(uiColor: .secondaryLabel))
+            .navigationTitle(t("user.mainView.profile"))
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        // Action for settings or other options
+                    }) {
+                        Image(systemName: "ellipsis.circle")
+                    }
+                }
             }
-
-            Spacer() // Pushes play count to the right
-
-            // Play Count
-            HStack(spacing: 4) {
-                Image(systemName: "play.fill")
-                    .font(.caption)
-                Text(formatNumber(item.playCount))
-                    .font(.caption)
-            }
-            .foregroundColor(Color(uiColor: .secondaryLabel)) // Consistent color
         }
-        .padding(.vertical, 8)
-        .padding(.horizontal, 12)
-        .background(Color(uiColor: .systemBackground))
-        .cornerRadius(12)
-        .shadow(radius: 1) // Lighter shadow for list items
-        .frame(maxWidth: .infinity, alignment: .leading) // Ensure it takes full available width
-        .hoverEffect(.highlight)
-        .animation(.easeOut(duration: 0.2), value: 0)
     }
-
-    // MARK: - API Calls (Integration)
 
     private func loadUserData() {
-        loading = true
-        errorMessage = nil
         Task {
+            loading = true
+            errorMessage = nil
             do {
-                let userDetailRes = try await userService.getUserDetail(userId: 123)
-                let playlistRes = try await getUserPlayList(userID: 123)
-
-                await MainActor.run {
-                    self.userDetail = userDetailRes
-                    self.playList = playlistRes
-                }
+                // For demonstration, let's assume a fixed user ID or retrieve it from authManager
+                let userId = 123 // Replace with actual user ID from login
+                userDetail = try await userService.getUserDetail(userId: userId)
+                playList = try await getUserPlayList(userID: userId)
             } catch {
-                await MainActor.run {
-                    print("Error loading user data: \(error)")
-                    errorMessage = t("user.message.loadFailed") // Localized error message
-                }
+                errorMessage = error.localizedDescription
+                print("Error loading user data: \(error.localizedDescription)")
             }
-            await MainActor.run {
-                loading = false
-            }
-        }
-    }
-
-    // MARK: - Navigation/Action Placeholders
-
-    private func showFollowList() {
-        print("Navigate to Follow List for user \(userDetail?.userName ?? "N/A")")
-    }
-
-    private func showFollowerList() {
-        print("Navigate to Follower List for user \(userDetail?.userName ?? "N/A")")
-    }
-
-    private func openPlaylist(item: PlaylistItem) {
-        print("Open playlist: \(item.name)")
-        Task {
-            do {
-                try await Task.sleep(nanoseconds: 500_000_000)
-                print("Navigating to music list for playlist: \(item.name) with ID: \(item.id)")
-            } catch {
-                print("Failed to get list detail: \(error)")
-            }
+            loading = false
         }
     }
 }
 
-// MARK: - Tooltip Modifier for iOS 15 (Basic Example)
+
+// MARK: - CollapsingUserInfoHeader
+// This header is designed to be part of a ScrollView and collapse/expand
+struct CollapsingUserInfoHeader: View {
+    let userDetail: UserInfoData
+    let getImgUrl: (URL?, String?) -> URL? // Passed in
+    let t: (String, [String: Any]?) -> String // Passed in
+    let formatNumber: (Int) -> String // Passed in
+
+    var body: some View {
+        GeometryReader { geometry in
+            let minY = geometry.frame(in: .global).minY
+            let height = max(0, minY + 200) // Adjust 200 based on desired header height
+            let progress = 1 - min(1, max(0, minY) / 100) // Adjust 100 for collapse speed
+
+            ZStack(alignment: .bottomLeading) {
+                // Background Image
+                AsyncImage(url: getImgUrl(userDetail.backgroundUrl)) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                            .frame(width: geometry.size.width, height: height)
+                            .clipped()
+                            .overlay(LinearGradient(gradient: Gradient(colors: [Color.clear, Color.black.opacity(0.6)]), startPoint: .top, endPoint: .bottom))
+                    } else if phase.error != nil {
+                        Color.gray // Fallback for error
+                            .frame(width: geometry.size.width, height: height)
+                    } else {
+                        ProgressView() // Placeholder during loading
+                            .frame(width: geometry.size.width, height: height)
+                    }
+                }
+
+                VStack(alignment: .leading, spacing: 8) {
+                    // Avatar
+                    AsyncImage(url: getImgUrl(userDetail.avatarUrl, "80y80")) { phase in
+                        if let image = phase.image {
+                            image
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                                .overlay(Circle().stroke(Color.white, lineWidth: 2))
+                                .shadow(radius: 5)
+                        } else {
+                            Image(systemName: "person.circle.fill")
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 80, height: 80)
+                                .clipShape(Circle())
+                                .foregroundColor(.gray)
+                        }
+                    }
+
+                    // User Name
+                    HStack {
+                        Text(userDetail.userName)
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .foregroundColor(.white)
+
+                        // Artist Icon (simplified for demonstration)
+                        if userDetail.userType == 4 || userDetail.accountType == 4 { // Assuming 4 is artist type
+                            Image(systemName: "music.mic.fill")
+                                .foregroundColor(.yellow)
+                                .tooltip(t("user.detail.artist"))
+                        }
+                    }
+
+                    // User Stats
+                    HStack(spacing: 20) {
+                        // Now calling the function passed as a parameter
+                        userInfoStatItem(value: formatNumber(userDetail.followers), label: t("user.profile.followers"))
+                        userInfoStatItem(value: formatNumber(userDetail.follows), label: t("user.profile.following"))
+                        userInfoStatItem(value: "\(userDetail.level)", label: t("user.profile.level"))
+                    }
+
+                    // Signature
+                    Text(userDetail.signature ?? t("user.detail.noSignature"))
+                        .font(.caption)
+                        .foregroundColor(.white.opacity(0.7))
+                        .lineLimit(2)
+                }
+                .padding()
+                .offset(y: max(0, -minY)) // Parallax effect / sticky header
+            }
+            .frame(height: 200) // Original height
+        }
+    }
+
+    // Moved userInfoStatItem here to be a member of CollapsingUserInfoHeader
+    private func userInfoStatItem(value: String, label: String) -> some View {
+        VStack {
+            Text(value)
+                .font(.headline)
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+            Text(label)
+                .font(.caption)
+                .foregroundColor(.white.opacity(0.8))
+        }
+    }
+}
+
+// MARK: - PlaylistItemView
+
+struct PlaylistItemView: View {
+    let playlist: PlaylistItem
+    let getImgUrl: (URL?, String?) -> URL? // Passed in
+
+    var body: some View {
+        VStack(alignment: .leading) {
+            ZStack(alignment: .topTrailing) {
+                AsyncImage(url: getImgUrl(playlist.coverImgUrl)) { phase in
+                    if let image = phase.image {
+                        image
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 150, height: 150)
+                            .cornerRadius(10)
+                            .clipped()
+                    } else {
+                        RoundedRectangle(cornerRadius: 10)
+                            .fill(Color.gray.opacity(0.3))
+                            .frame(width: 150, height: 150)
+                            .overlay(Image(systemName: "music.note.list").foregroundColor(.white.opacity(0.6)))
+                    }
+                }
+
+                HStack(spacing: 2) {
+                    Image(systemName: "play.fill")
+                        .font(.caption2)
+                    Text("\(playlist.playCount)")
+                        .font(.caption2)
+                }
+                .padding(.horizontal, 6)
+                .padding(.vertical, 3)
+                .background(Color.black.opacity(0.6))
+                .foregroundColor(.white)
+                .cornerRadius(5)
+                .offset(x: -5, y: 5)
+            }
+
+            Text(playlist.name)
+                .font(.subheadline)
+                .lineLimit(2)
+                .multilineTextAlignment(.leading)
+                .padding(.top, 4)
+
+            Text("\(playlist.trackCount) " + "songs") // You might want to localize "songs"
+                .font(.caption)
+                .foregroundColor(.gray)
+        }
+        .frame(width: 150)
+    }
+}
+
+// MARK: - TooltipModifier
 
 extension View {
     func tooltip(_ text: String) -> some View {
@@ -368,7 +318,7 @@ struct TooltipModifier: ViewModifier {
                             .background(Color.secondary.opacity(0.9))
                             .foregroundColor(.white)
                             .cornerRadius(5)
-                            .offset(y: -30)
+                            .offset(y: -30) // Position above the content
                             .transition(.opacity)
                     }
                 }
@@ -393,7 +343,7 @@ struct userMainView_Previews: PreviewProvider {
     static var previews: some View {
         userMainView()
             .environmentObject(LocalizationManager())
-            // You might need to add other environment objects if your preview relies on them, e.g.,
-            // .environmentObject(AuthenticationManager())
+        // You might need to add other environment objects if your preview relies on them, e.g.,
+        // .environmentObject(AuthenticationManager())
     }
 }

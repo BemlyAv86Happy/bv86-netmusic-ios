@@ -107,4 +107,4 @@
 "user.detail.playlists" = "Playlists";
 "user.detail.noPlaylists" = "No playlists found";
 "user.mainView.loadData" = "Loading user data...";
-"user.playlist.trackCount" = "Track Count";
+"user.playlist.trackCount" = "%d TrackCount";

@@ -10,6 +10,7 @@
 		5948F01619A290A47F9C37ED /* getPlayListAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F88D276182505BD216AE /* getPlayListAPI.swift */; };
 		5948F093668E89953B101ADA /* AuthenticationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F1E9900FF92F87437802 /* AuthenticationManager.swift */; };
 		5948F0C3632A4560F01C20D9 /* NELogin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FB847A4AB0B0CC4B9531 /* NELogin.swift */; };
+		5948F0D035CA5580455CEA31 /* themeIdeas.md in Sources */ = {isa = PBXBuildFile; fileRef = 5948F179B32ACD08ED6D718C /* themeIdeas.md */; };
 		5948F139AC2B7BE3CA48DCE3 /* userQrShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FE9BD0F024B3495CA442 /* userQrShow.swift */; };
 		5948F45CF98269FAD70863D9 /* userCellPhoneShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC596535618AAB70B9BA /* userCellPhoneShow.swift */; };
 		5948F49B4361D9683707AE8A /* NELoginPhone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */; };
@@ -20,6 +21,7 @@
 		5948FA0D29F01E2546459D14 /* userThought.md in Sources */ = {isa = PBXBuildFile; fileRef = 5948FC73D4F44EAD928F684D /* userThought.md */; };
 		5948FAC90B197DE05CDBDA83 /* NELoginQrChk.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F69696D141F6FD6C05DE /* NELoginQrChk.swift */; };
 		5948FB502567D8DBFEBA4CAD /* loginAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F79C45FAE70E0A25B7EC /* loginAPI.swift */; };
+		5948FB7812D4CD79D77FC958 /* 代码规范.md in Sources */ = {isa = PBXBuildFile; fileRef = 5948F1DF6ED96E0D623BDD98 /* 代码规范.md */; };
 		5948FDF4EC6247040C8E2B1A /* userMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF59D1C679465758B9A5 /* userMainView.swift */; };
 		5948FEFE77B19AFCDF1A80A5 /* PlaybackSettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948FF22AC4FB2EA9C0FE6D1 /* PlaybackSettingsView.swift */; };
 		5948FF030693350CC26616E2 /* apiModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5948F848C24C57E27B6BA130 /* apiModels.swift */; };
@@ -98,6 +100,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		5948F179B32ACD08ED6D718C /* themeIdeas.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = themeIdeas.md; sourceTree = "<group>"; };
+		5948F1DF6ED96E0D623BDD98 /* 代码规范.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "代码规范.md"; sourceTree = "<group>"; };
 		5948F1E9900FF92F87437802 /* AuthenticationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthenticationManager.swift; sourceTree = "<group>"; };
 		5948F36C38BF5165B4CEBCF9 /* NELoginPhone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NELoginPhone.swift; sourceTree = "<group>"; };
 		5948F5C035A8376E65EACFA5 /* userAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = userAPI.swift; sourceTree = "<group>"; };
@@ -184,6 +188,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5948F089D931A67F8A605D3B /* docs */ = {
+			isa = PBXGroup;
+			children = (
+				5948F179B32ACD08ED6D718C /* themeIdeas.md */,
+				5948F1DF6ED96E0D623BDD98 /* 代码规范.md */,
+			);
+			path = docs;
+			sourceTree = "<group>";
+		};
 		5948F2FC1122C1612F370487 /* songs */ = {
 			isa = PBXGroup;
 			children = (
@@ -447,6 +460,7 @@
 				B58FBE922E009F1D00A622E4 /* Info.plist */,
 				B58FBE932E009F1D00A622E4 /* netmusicApp.swift */,
 				5948FA53F811BD173A0F7DF8 /* mockAPI */,
+				5948F089D931A67F8A605D3B /* docs */,
 			);
 			path = netmusic;
 			sourceTree = "<group>";
@@ -697,6 +711,8 @@
 				5948F01619A290A47F9C37ED /* getPlayListAPI.swift in Sources */,
 				5948FF030693350CC26616E2 /* apiModels.swift in Sources */,
 				5948F8CC30C6537CA558D11D /* userMainView.swift in Sources */,
+				5948F0D035CA5580455CEA31 /* themeIdeas.md in Sources */,
+				5948FB7812D4CD79D77FC958 /* 代码规范.md in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

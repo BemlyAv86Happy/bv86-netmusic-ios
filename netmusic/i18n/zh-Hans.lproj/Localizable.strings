@@ -107,4 +107,4 @@
 "user.detail.playlists" = "歌单";
 "user.detail.noPlaylists" = "暂无歌单";
 "user.mainView.loadData" = "正在加载数据...";
-"user.playlist.trackCount" = "共 {0} 首";
+"user.playlist.trackCount" = "%d 首";
